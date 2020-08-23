@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { saveBrowserLatitude, saveBrowserLongitude, saveweatherData } from '../redux/action';
 import {weatherServiceCall} from '../weatherServiceCall'
-import FetchWeather from './fetchWeather'
+import FetchWeather from './fetchWeather/fetchWeather'
 
 
 class CurrentLocation extends React.Component{
@@ -76,9 +76,8 @@ class CurrentLocation extends React.Component{
     
     return (
       <div>
-        here
-        {this.props.latitude}
-        {this.props.longitude}
+        {/* {this.props.latitude}
+        {this.props.longitude} */}
         <FetchWeather/>
       </div>
     );

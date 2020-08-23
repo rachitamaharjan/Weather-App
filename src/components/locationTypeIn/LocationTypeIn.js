@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {saveEnteredLatitude} from '../redux/action'
+import {saveEnteredLatitude} from '../../redux/action'
+import './locationTypeIn.css'
 // ReactReduxContext; 
 
 
@@ -10,7 +11,7 @@ class LocationTypeIn extends React.Component{
         super(props);
         this.state= {
           inputLatitude: '',
-          inputLongitude: '',
+          // inputLongitude: '',
         //   inputValue: ''
         }
       }
@@ -42,22 +43,20 @@ class LocationTypeIn extends React.Component{
         })
       }
 
-    OnChangeLong = (e) => {
-        console.log(e.target.value);
-        this.setState({
-          inputLongitude: e.target.value,
-        //   inputLongitude: [...this.state.inputLatitude, e.target.value],
-        })
-      }
+    // OnChangeLong = (e) => {
+    //     console.log(e.target.value);
+    //     this.setState({
+    //       inputLongitude: e.target.value,
+    //     //   inputLongitude: [...this.state.inputLatitude, e.target.value],
+    //     })
+    //   }
   
     render(){
         console.log(this.props)
         return(
-            <div>
-                <h1>Tasks to do:</h1>
-                <input type = "text" placeholder="ex: 27.72" value = {this.state.inputLatitude} onChange = {this.OnChangeLat}/>
-                <input type = "text" placeholder="ex: 85.35" value = {this.state.inputLongitude} onChange = {this.OnChangeLong}/>
-                <input type='button' value ='+' onClick= {this.addLatLong} />
+            <div className = 'location-search-box'>
+                <input type = "text" id = 'location-input' placeholder="Search Place..." value = {this.state.inputLatitude} onChange = {this.OnChangeLat}/>
+                <input type='button' className = 'location-search-button' onClick= {this.addLatLong} />
             </div>
         )
     }

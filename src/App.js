@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import CurrentLocation from './components/ currentLocation'
-import LocationTypeIn from './components/LocationTypeIn'
+import LocationTypeIn from './components/locationTypeIn/LocationTypeIn'
 import store from './redux/store';
 import { Provider } from 'react-redux';
-import FetchWeather from './components/fetchWeather'
+import FetchWeather from './components/fetchWeather/fetchWeather'
 
 class App extends React.Component{
 
@@ -16,7 +16,7 @@ class App extends React.Component{
 
     return (
       <Provider store = {store}>
-        <div>
+        <div className = 'main-wrapper'>
         <LocationTypeIn />
         <CurrentLocation />
         {/* <FetchWeather/> */}

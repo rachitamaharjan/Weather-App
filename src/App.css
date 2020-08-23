@@ -1,0 +1,19 @@
+*{
+    /* margin:  0 auto;
+    padding: 0; */
+    font-family: comfortaa;
+    /* background: #65BDC0; */
+    /* color: white; */
+    text-decoration: none;
+    list-style: none;
+}
+
+.location-search-box{
+    /* flex: left; */
+}
+
+.clearfix:after {
+    content: '';
+    clear: both;
+    display: table;
+}
