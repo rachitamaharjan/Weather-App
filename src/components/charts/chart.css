@@ -1,0 +1,8 @@
+.chart-container{
+    justify-content: center;
+}
+
+.daily-line-chart, .hourly-line-chart{
+    max-width: 500px;
+    justify-content: center;
+}

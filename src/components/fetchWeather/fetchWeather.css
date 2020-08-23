@@ -18,7 +18,7 @@
     width: 500px;
     justify-items: center;
     margin: 50px 30px 10px 30px;
-
+    filter: drop-shadow(0px 4px 20px rgba(238, 119, 127, 0.5));
 }
 
 .weather-logo img{
@@ -27,6 +27,7 @@
     padding: 30px;
     height: 150px;
     background-color: #EE777F;
+    margin-bottom: -4px;
 }
 
 .time-temp-desc{
@@ -81,6 +82,7 @@
     text-align: center;
     margin-right: 30px;
     padding-top: 10px;
+    box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.64);
 }
 
 .pres-hum p{
@@ -93,7 +95,7 @@
     border-radius: 0 0 18px 18px;
     background-color: #FFF5F5;
     margin-right: 30px;
-
+    /* filter: drop-shadow(0px 4px 10px rgba(238, 119, 127, 0.6)); */
 }
 
 .pres-hum .pressure{
