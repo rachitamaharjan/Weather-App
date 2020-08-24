@@ -156,9 +156,11 @@ class FetchWeather extends React.Component {
         }
         else
         return(
-            <div className = 'waitingForData'>
-                <img src = {loading}/>
-                <div >Getting Weather Information</div>
+            <div className = 'waiting-container'>
+                <div className = 'waitingForData'>
+                    <div className = 'waiting-packman'><img src = {loading}/></div>
+                    <div >Getting Weather Information</div>
+                </div>
             </div>
         )
         

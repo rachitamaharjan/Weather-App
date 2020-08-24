@@ -7,16 +7,27 @@
     display: flex;
 }
 
+.waiting-container{
+    display: flex;
+    justify-content: center;
+    /* max-width: 800px; */
+}
+
 .waitingForData{
     background-color:#FFF5F5 ;
     border-radius: 90px;
-    padding: 20px;
+    padding: 20px 30px 50px 30px;
     font-size: 30px;
     font-weight: 900;
-    margin-top: 100px;
+    margin: 100px 20px 0 20px;
     text-align: center;
     align-items: center;
-    padding-bottom: 40px ;
+    max-width: 800px;
+}
+
+.waiting-packman{
+    display: flex;
+    justify-content: center;
 }
 
 .img-info{

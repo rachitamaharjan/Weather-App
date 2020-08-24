@@ -2,6 +2,7 @@ import {  saveweatherData } from "./redux/action";
 import {  savePieData } from "./redux/action";
 
 export function weatherServiceCall(latitude,longitude){
+  const API_KEY = process.env.FETCH_WEATHER_API_KEY
 
     return (dispatch, getState) => {
       console.log('getstate', getState())
@@ -24,7 +25,7 @@ export function weatherServiceCall(latitude,longitude){
  function weatherCheckCount(weatherVal,dispatch){
    console.log('weatherval',weatherVal)
   let cloudNum = 0, clearNum = 0, snowNum = 0, rainNum = 0, drizzleNum = 0, thunderstormNum = 0;
-  weatherVal.daily.map(val => {
+  weatherVal.hourly.map(val => {
   switch(val.weather[0].main){
       
       case 'Clouds':
