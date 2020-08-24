@@ -1,8 +1,14 @@
 .chart-container{
     justify-content: center;
+    padding: 0;
 }
 
-.daily-line-chart, .hourly-line-chart{
-    max-width: 500px;
-    justify-content: center;
+.chart-container li {
+    padding: 10px 30px 10px 30px;
+}
+
+.daily-line-chart, .hourly-line-chart {
+    padding: 10px 40px 10px 40px;
+    /* max-width: 500px; */
+    /* justify-content: center; */
 }

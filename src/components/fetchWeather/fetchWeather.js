@@ -138,11 +138,17 @@ class FetchWeather extends React.Component {
                     }}
                 /> */}
                 {/* <div> {this.props.weatherData.hourly[0].temp} </div>) */}
-                <div className = 'chart-container'>
-                    <WeatherPieChart weatherData = {this.props.pieChartValues} />
-                    <DailyLineChart weatherData = {this.props.weatherData} />
-                    <HourlyLineChart weatherData = {this.props.weatherData} />
-                </div>
+                <ul className = 'chart-container'>
+                    <li>
+                        <WeatherPieChart weatherData = {this.props.pieChartValues}/>
+                    </li>
+                    <li>
+                        <DailyLineChart weatherData = {this.props.weatherData}/>
+                    </li>
+                    <li>
+                        <HourlyLineChart weatherData = {this.props.weatherData}/>
+                    </li>
+                </ul>
                 {/* Hourly: {this.props.weatherData.hourly.map(each => <div>{each.temp} </div>)}
                 Daily temp day: {this.props.weatherData.daily.map(each => <div>{each.temp.day} </div>)} */}
             </div>

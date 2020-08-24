@@ -83,7 +83,7 @@ export class WeatherPieChart extends React.Component {
             // })
             // this.props.weatherData.daily.map(each => each.temp.day )
             return (
-                <div className = 'daily-line-chart'>
+                <div className = 'weather-pie-chart'>
                     {/* {this.props.weatherData.daily.map(each => <div>{each.temp.day}</div> )} */}
                                     <Pie
                         data={pieChartData}

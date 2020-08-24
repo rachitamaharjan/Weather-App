@@ -17,12 +17,9 @@ export function weatherServiceCall(latitude,longitude){
         //   this.props.saveWeather(val)
           })
     }
-
-
-
-   
-
 }
+
+
 //weatherCountName
  function weatherCheckCount(weatherVal,dispatch){
    console.log('weatherval',weatherVal)
