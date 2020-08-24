@@ -6,6 +6,18 @@
     justify-content: center;
 }
 
+.waitingForData{
+    background-color:#FFF5F5 ;
+    border-radius: 90px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 900;
+    margin-top: 100px;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 40px ;
+}
+
 .img-info{
     display: inline-flex;
     /* padding: 10px 10px 10px 0; */
@@ -18,7 +30,7 @@
     width: 500px;
     justify-items: center;
     margin: 50px 30px 10px 30px;
-    filter: drop-shadow(0px 4px 20px rgba(238, 119, 127, 0.5));
+    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.4));
 }
 
 .weather-logo img{
@@ -82,7 +94,7 @@
     text-align: center;
     margin-right: 30px;
     padding-top: 10px;
-    box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.64);
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.64);
 }
 
 .pres-hum p{

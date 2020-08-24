@@ -9,33 +9,71 @@ export class WeatherPieChart extends React.Component {
     constructor(props) {
         super(props)
         console.log('props aayo',this.props)
-        this.state= {
-          labels: ['Sun', 'Mon', 'Tue',
-                     'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          datasets: [
-            {
-              label: 'Weather',
-              backgroundColor: [
-                '#B21F00',
-                '#C9DE00',
-                '#2FDE00',
-                '#00A6B4',
-                '#6800B4'
-              ],
-              hoverBackgroundColor: [
-              '#501800',
-              '#4B5000',
-              '#175000',
-              '#003350',
-              '#35014F'
-              ],
-              data: this.props
-            }
-          ]
-        }
+        // this.state= {
+        //   labels: ['Cloudy', 'Clear', 'Snow',
+        //              'Rain', 'Drizzle', 'Thunderstorm'],
+        //   datasets: [
+        //     {
+        //       label: 'Weather',
+        //       backgroundColor: [
+        //         '#1D2343',
+        //         '#65BDC0',
+        //         '#EE777F',
+        //         'rgb(255, 230, 109)',
+        //         '#FFF5F5'
+        //       ],
+        //       hoverBackgroundColor: [
+        //       '#501800',
+        //       '#4B5000',
+        //       '#175000',
+        //       '#003350',
+        //       '#35014F'
+        //       ],
+        //       data: this.props.
+        //       // this.props.pieChartValues
+        //     }
+        //   ]
+        // }
     }
 
     render() {
+
+      if (this.props.weatherData === undefined || Object.keys(this.props.weatherData).length === 0 ){
+        console.log('nop')
+        return null
+      }
+      else{
+        console.log('yup')
+            const pieChartData = {
+              labels: ['Cloudy', 'Clear', 'Snow',
+                         'Rain', 'Drizzle', 'Thunderstorm'],
+              datasets: [
+                {
+                  label: 'Weather',
+                  backgroundColor: [
+                    '#1D2343',
+                    '#65BDC0',
+                    '#EE777F',
+                    'rgb(255, 230, 109)',
+                    '#FFF5F5'
+                  ],
+                  hoverBackgroundColor: [
+                  '#501800',
+                  '#4B5000',
+                  '#175000',
+                  '#003350',
+                  '#35014F'
+                  ],
+                  data: [this.props.weatherData.cloudNum, 
+                    this.props.weatherData.clearNum, 
+                    this.props.weatherData.snowNum, 
+                    this.props.weatherData.rainNum, 
+                    this.props.weatherData.drizzleNum,
+                    this.props.weatherData.thunderstormNum ]
+                  // this.props.pieChartValues
+                }
+              ]
+            }
 
             // this.setState({
             //     datasets: [{
@@ -48,7 +86,7 @@ export class WeatherPieChart extends React.Component {
                 <div className = 'daily-line-chart'>
                     {/* {this.props.weatherData.daily.map(each => <div>{each.temp.day}</div> )} */}
                                     <Pie
-                        data={this.state}
+                        data={pieChartData}
                         options={{
                             title:{
                             display:true,
@@ -70,5 +108,12 @@ export class WeatherPieChart extends React.Component {
             )}
 
 }
+}
 
-// export default connect(mapStateToProps, 0) (LineChart)
+// const mapStateToProps = (state) => (
+//   {
+//     pieChartValues: state.pieChartValues
+//   }
+// )
+
+// export default connect(mapStateToProps, 0) (WeatherPieChart)

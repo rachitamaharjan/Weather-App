@@ -24,3 +24,10 @@ export const saveweatherData = (payload) => ({
     type: 'SAVE_WEATHER_DATA',
     payload
   })
+
+export const savePieData = (payload) => ({
+    type: 'ADD_PIE_CHART_DATA',
+    payload
+  })
+
+

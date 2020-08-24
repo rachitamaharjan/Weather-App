@@ -111,6 +111,7 @@ const mapDispatchToProps = dispatch => {
       saveLatitude: (val) => dispatch(saveBrowserLatitude(val)),
       saveLongitude: (val) => dispatch(saveBrowserLongitude(val)),
       fetchSaveWeather: (lat, long) => dispatch(weatherServiceCall(lat, long))
+      // fetchWeatherForChart: (lat, long) => dispatch(weatherServiceCall(lat, long))
   }
 }
 

@@ -17,7 +17,12 @@
     background-position: 13px 7px;
 }
 
-#location-input:focus { background-image: none; }
+#location-input:focus { 
+    background-image: none;
+    /* border-radius: 20px 0 0 20px ; */
+    outline: none;
+    box-shadow: 0px 0px 2px #0066ff;
+ }
 
 .location-search-button{
     /* margin-left: 5px; */
@@ -28,4 +33,9 @@
     padding: 5px 20px 5px 15px;
     border-radius: 0 20px 20px 0;
     height: 36px;
+}
+
+.location-search-button:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #0066ff;
 }

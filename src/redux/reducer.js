@@ -3,7 +3,14 @@ const initialState = {
     longitude: '',
     EnteredLatitude: '',
     EnteredLongitude: '',
-    weatherData: {}
+    weatherData: {},
+    pieChartValues: {}
+    // snowNum: 0, 
+    // rainNum: 0, 
+    // cloudNum: 0, 
+    // clearNum: 0, 
+    // drizzleNum: 0, 
+    // thunderstormNum: 0
   }
 
   export const mainReducer = (state = initialState, action) => {
@@ -29,6 +36,10 @@ const initialState = {
         case 'SAVE_WEATHER_DATA':
         // console.log('inside reducer top case',action.payload)
             return {...state, weatherData: action.payload}
+
+        case 'ADD_PIE_CHART_DATA':
+        // console.log('inside reducer top case',action.payload)
+            return {...state, pieChartValues: action.payload}
             
       default:
         return state;

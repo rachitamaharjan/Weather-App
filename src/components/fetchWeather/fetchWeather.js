@@ -7,6 +7,7 @@ import temp_icon from './temperature.ico';
 import pressure_icon from './pressure.svg';
 import humidity_icon from './humidity.svg';
 import dew_icon from './dew_point.ico';
+import loading from './loading.svg';
 import {DailyLineChart} from '../charts/dailyLineChart.js';
 import {HourlyLineChart} from '../charts/hourlyLineChart.js';
 import {WeatherPieChart} from '../charts/weatherPieChart.js';
@@ -42,9 +43,12 @@ class FetchWeather extends React.Component {
     //     return (fahrenheit - 32) * 5 / 9;
     //   }
 
+
     // weatherCheck = (weatherVal) => {
+    //     // debugger;
     //     let cloudNum = 0, clearNum = 0, snowNum = 0, rainNum = 0, drizzleNum = 0, thunderstormNum = 0;
-    //     switch(weatherVal){
+    //     weatherVal.map(val => {
+    //     switch(val.weather[0].main){
             
     //         case 'Clouds':
     //             cloudNum++;
@@ -75,6 +79,7 @@ class FetchWeather extends React.Component {
     //         //   weatherVal = 0;
             
     //     }  
+    // })
     //     this.setState({
     //         Clouds: cloudNum,
     //         Clear: clearNum,
@@ -89,7 +94,6 @@ class FetchWeather extends React.Component {
     render() {
         if (this.props.weatherData.current !== undefined || this.props.weatherData.hourly !== undefined  || this.props.weatherData.daily !== undefined){
             console.log('uuu', this.props.weatherData.current.weather[0].description)
-            // this.weatherCheck(this.props.weatherData.daily.map(each => each.weather.main))
             // var tempInCelsius = this.toCelsius(this.props.weatherData.current.temp)
         return (
             <div className = 'weather-details clearfix'>
@@ -135,7 +139,7 @@ class FetchWeather extends React.Component {
                 /> */}
                 {/* <div> {this.props.weatherData.hourly[0].temp} </div>) */}
                 <div className = 'chart-container'>
-                    <WeatherPieChart weatherData = {this.state} />
+                    <WeatherPieChart weatherData = {this.props.pieChartValues} />
                     <DailyLineChart weatherData = {this.props.weatherData} />
                     <HourlyLineChart weatherData = {this.props.weatherData} />
                 </div>
@@ -146,7 +150,10 @@ class FetchWeather extends React.Component {
         }
         else
         return(
-            <div>Getting Weather Information<b>....</b></div>
+            <div className = 'waitingForData'>
+                <img src = {loading}/>
+                <div >Getting Weather Information</div>
+            </div>
         )
         
     }
@@ -156,7 +163,8 @@ const mapStateToProps = (state) => (
     {
       latitude: state.latitude,
       longitude: state.longitude,
-      weatherData: state.weatherData
+      weatherData: state.weatherData,
+      pieChartValues: state.pieChartValues
     }
 )
 
