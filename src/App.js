@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import CurrentLocation from './components/ currentLocation'
-import LocationTypeIn from './components/locationTypeIn/LocationTypeIn'
+import {LocationTypeIn} from './components/locationTypeIn/LocationTypeIn'
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import FetchWeather from './components/fetchWeather/fetchWeather'
