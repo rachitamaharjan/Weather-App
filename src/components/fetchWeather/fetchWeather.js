@@ -17,6 +17,8 @@ class FetchWeather extends React.Component {
     constructor(props) {
         super(props)
         this.state ={
+            // latitude: this.props.latitude,
+            // longitude: this.props.longitude,
             Clouds: '',
             Clear: '',
             Snow: '',

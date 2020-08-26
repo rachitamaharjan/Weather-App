@@ -27,11 +27,11 @@ const initialState = {
 
         case 'SAVE_ENTERED_LATITUDE':
         console.log('inside reducer save location case',action.payload)
-            return {...state, EnteredLatitude: action.payload}
+            return {...state, latitude: action.payload}
 
         case 'SAVE_ENTERED_LONGITUDE':
         console.log('inside reducer save location case',action.payload)
-            return {...state, EnteredLongitude: action.payload}
+            return {...state, longitude: action.payload}
 
         case 'SAVE_WEATHER_DATA':
         // console.log('inside reducer top case',action.payload)
