@@ -9,6 +9,10 @@ class CurrentLocation extends React.Component{
 
   constructor(props){
     super(props)
+    this.state={
+      latitude:0,
+      longitude:0,
+    }
   }
 
   componentDidMount(){
@@ -27,9 +31,13 @@ class CurrentLocation extends React.Component{
   
    success = position => {
     console.log('lattt longg',position)
+    this.setState({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    })
       this.props.saveLatitude(position.coords.latitude)
       this.props.saveLongitude(position.coords.longitude)
-      this.props.fetchSaveWeather(position.coords.latitude,position.coords.longitude)
+      // this.props.fetchSaveWeather(position.coords.latitude,position.coords.longitude)
 
 
      
@@ -56,6 +64,8 @@ class CurrentLocation extends React.Component{
   }
 
   render(){
+    this.props.fetchSaveWeather(this.state.latitude,this.state.longitude)
+
 
     // const  getLocation = () => {
     //   if (navigator.geolocation) {
