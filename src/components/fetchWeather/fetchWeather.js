@@ -17,8 +17,6 @@ class FetchWeather extends React.Component {
     constructor(props) {
         super(props)
         this.state ={
-            // latitude: this.props.latitude,
-            // longitude: this.props.longitude,
             Clouds: '',
             Clear: '',
             Snow: '',
@@ -27,71 +25,7 @@ class FetchWeather extends React.Component {
             Thunderstorm: '',
         }
     }
-
-    // componentDidMount() {
-    //     console.log('here is state inside to props', this.props)
-    //        fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${this.props.latitude}&lon=${this.props.longitude}&appid=780a4551ff3e6ac4892ab54ec1e701ec`)
-    //     .then(response => {
-    //       console.log('single response',response)
-    //       return response.json()   //conversion to json
-    //   }).then(val => {
-    //       console.log('weather',val)
-    //       this.props.saveWeather(val)
-    //       })
-
-    // }
-
-    // toCelsius = (fahrenheit) => {
-    //     return (fahrenheit - 32) * 5 / 9;
-    //   }
-
-
-    // weatherCheck = (weatherVal) => {
-    //     // debugger;
-    //     let cloudNum = 0, clearNum = 0, snowNum = 0, rainNum = 0, drizzleNum = 0, thunderstormNum = 0;
-    //     weatherVal.map(val => {
-    //     switch(val.weather[0].main){
-            
-    //         case 'Clouds':
-    //             cloudNum++;
-    //             console.log('clouds vitra',cloudNum)
-    //             // return {...state, Clouds: }
-    
-    //         case 'Clear':
-    //             clearNum++;
-    //             // return {...state, Clear: }
-    
-    //         case 'Snow':
-    //             snowNum++;
-    //             // return {...state, Snow: }
-    
-    //         case 'Rain':
-    //             rainNum++;
-    //             // return {...state, Rain: }
-    
-    //         case 'Drizzle':
-    //             drizzleNum++;
-    //             // return {...state, Drizzle: }
-
-    //         case 'Thunderstorm':
-    //             thunderstormNum++;
-    //             // return {...state, Thunderstorm: }
-                
-    //       default:
-    //         //   weatherVal = 0;
-            
-    //     }  
-    // })
-    //     this.setState({
-    //         Clouds: cloudNum,
-    //         Clear: clearNum,
-    //         Snow: snowNum,
-    //         Rain: rainNum,
-    //         Drizzle: drizzleNum,
-    //         Thunderstorm: thunderstormNum,
-    //     })
-    //     return 0;
-    // }
+   
 
     render() {
         if (this.props.weatherData.current !== undefined || this.props.weatherData.hourly !== undefined  || this.props.weatherData.daily !== undefined){
@@ -125,21 +59,7 @@ class FetchWeather extends React.Component {
                         <p>Dew Point</p>
                     </div>
                 </ul>
-                {/* <Line
-                    data={this.state}
-                    options={{
-                        title:{
-                        display:true,
-                        text:'Average Temperature Per Day',
-                        fontSize:20
-                        },
-                        legend:{
-                        display:true,
-                        position:'right'
-                        }
-                    }}
-                /> */}
-                {/* <div> {this.props.weatherData.hourly[0].temp} </div>) */}
+
                 <ul className = 'chart-container'>
                     <li>
                         <WeatherPieChart weatherData = {this.props.pieChartValues}/>

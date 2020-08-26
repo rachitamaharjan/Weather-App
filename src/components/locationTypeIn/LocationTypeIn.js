@@ -24,24 +24,10 @@ class LocationTypeIn extends React.Component{
     
     componentDidMount(){
 
-      // saveEnteredLatitude(this.state.enteredLatitude)
-      // saveEnteredLatitude(this.state.enteredLongitude)
-      // fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
-      // fetch(`https://app.geocodeapi.io/api/v1/autocomplete?text=666%20Fifth%20Ave&apikey=${API_KEY}`)
-      //   .then(response => {
-      //     console.log('single response',response)
-      //     return response.json()   //conversion to json
-      // }).then(val => {
-      //     console.log('weather',val)
-      //     dispatch(saveweatherData(val))
-      //     weatherCheckCount(val,dispatch)
-      //   //   this.props.saveWeather(val)
-      //     })
 
     }
     
     addtoState = (coordinates) => {
-      console.log('heyheyhey',coordinates)
       // this.setState({
       //   enteredLatitude: coordinates[0],
       //   enteredLongitude: coordinates[1]
@@ -51,26 +37,9 @@ class LocationTypeIn extends React.Component{
     addLatLong = () => {
 
       if(this.state.enteredLatitude !== 0){
-        console.log('inside addlatlong coordinates', this.state.enteredLatitude, this.state.enteredLongitude);
         this.props.saveEnteredLatitude(this.state.enteredLatitude)
         this.props.saveEnteredLongitude(this.state.enteredLongitude)
       }
-  
-        // if(this.state.allLocation.)
-        // const latitude = this.state.inputValue;
-        // const longitude = this.state.inputLongitude;
-        // this.props.saveEnteredLatitude(coordinates[0]);
-        // this.props.saveEnteredLongitude(coordinates[1]);
-        // this.props.saveEnteredLatitude(this.state.inputValue);
-        // this.props.saveEnteredLongitude(this.state.inputLongitude);
-        // currentTodos.push(this.state.inputValue);
-    
-        // this.setState({
-        // //   toDos: currentTodos,
-        //   inputValue: '',
-        // },() => {
-        // //   console.log(this.state.toDos);
-        // }) 
     }
 
     onChangeInput = (e) => {
@@ -86,38 +55,23 @@ class LocationTypeIn extends React.Component{
           fetch(`https://app.geocodeapi.io/api/v1/autocomplete?text=${e.target.value}&apikey=${API_KEY}`)
           // fetch(`https://app.geocodeapi.io/api/v1/autocomplete?text=${e.target.value}&apikey=13a519f0-e691-11ea-a4f2-5fabd33d58a2`)
           .then(response => {
-            // console.log('single response',response)
             return response.json()   //conversion o json
         }).then(val => {
-            console.log('apiko value',val);
-            console.log('features',val.features[0].geometry.coordinates)
             this.setState({
               allLocation: val,
-              enteredLatitude: val.features[0].geometry.coordinates[0],
-              enteredLongitude: val.features[0].geometry.coordinates[1]
+              enteredLatitude: val.features[0].geometry.coordinates[1],
+              enteredLongitude: val.features[0].geometry.coordinates[0]
 
             })
-            // dispatch(saveweatherData(val))
-            // weatherCheckCount(val,dispatch)
-          //   this.props.saveWeather(val)
+
             })
         }
       }
-
-    // OnChangeLong = (e) => {
-    //     console.log(e.target.value);
-    //     this.setState({
-    //       inputLongitude: e.target.value,
-    //     //   inputLongitude: [...this.state.inputValue, e.target.value],
-    //     })
-    //   }
   
     render(){
       // console.log('alllocation',this.state.allLocation)
         if( this.state.allLocation && this.state.allLocation && Object.keys(this.state.allLocation).length !== 0){
-          // console.log('features',this.state.allLocation.features)
-          // const suggestedLocation = this.state.allLocation
-        
+
         return(
             <div className = 'location-search-box'>
                 <input type = "text" list = 'location-values' id = 'location-input' placeholder="Search Place..."  value = {this.state.inputValue} onChange = {this.onChangeInput}/>

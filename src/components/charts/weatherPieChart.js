@@ -8,7 +8,6 @@ import './chart.css';
 export class WeatherPieChart extends React.Component {
     constructor(props) {
         super(props)
-        console.log('props aayo',this.props)
         // this.state= {
         //   labels: ['Cloudy', 'Clear', 'Snow',
         //              'Rain', 'Drizzle', 'Thunderstorm'],
@@ -39,11 +38,9 @@ export class WeatherPieChart extends React.Component {
     render() {
 
       if (this.props.weatherData === undefined || Object.keys(this.props.weatherData).length === 0 ){
-        console.log('nop')
         return null
       }
       else{
-        console.log('yup')
             const pieChartData = {
               labels: ['Cloudy', 'Clear', 'Snow',
                          'Rain', 'Drizzle', 'Thunderstorm'],
