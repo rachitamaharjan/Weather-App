@@ -24,18 +24,6 @@ export class DailyLineChart extends React.Component {
                 pointHoverBorderWidth: 5,
                 data: this.props.weatherData.daily.map(each => each.temp.day )
               },
-              // {
-              //   label: 'Pressure',
-              //   fill: true,
-              //   lineTension: 0.5,
-              //   backgroundColor: 'rgba(29, 35, 67, 0.9)',
-              //   borderColor: 'black',
-              //   pointBackgroundColor: 'white',
-              //   pointHoverBorderColor: '#8f9ffc',
-              //   borderWidth: 2,
-              //   pointHoverBorderWidth: 5,
-              //   data: this.props.weatherData.daily.map(each => each.pressure )
-              // },
               {
                 label: 'Humidity',
                 fill: true,
@@ -65,48 +53,29 @@ export class DailyLineChart extends React.Component {
     }
 
     render() {
-
-            // this.setState({
-            //     datasets: [{
-            //         data: [50, 40, 50, 40, 50, 40, 50, 40]
-            //     }]
-                
-            // })
-            // this.props.weatherData.daily.map(each => each.temp.day )
             return (
                 <div className = 'daily-line-chart'>
-                    {/* {this.props.weatherData.daily.map(each => <div>{each.temp.day}</div> )} */}
-                                    <Line
-                        data={this.state}
+                    <Line
+                        data={ this.state }
                         options={{
-                            title:{
+                          title:{
                             display:true,
-                            text:'This Week\' Values per day',
+                            text:'This Week\'s Values per day',
                             fontColor: 'black',
                             fontFamily: 'comfortaa',
                             fontSize:20
                             },
-                            scales: {
-                              xAxes: [{
-                                  gridLines: {
-                                      display: false,
-                                  }
-                              }],
-                              yAxes: [{
-                                  gridLines: {
-                                      display: false,
-                                  },
-                                  ticks:{
-                                    display: false,
-                                  }
+                          scales: {
+                            xAxes: [{ gridLines: { display: false } }],
+                            yAxes: [{
+                                gridLines: { display: false },
+                                ticks: { display: false }
                               }]
-                          },
-                            legend:{
-                              labels: {
-                                fontFamily: 'comfortaa'
-                               },
-                            display:true,
-                            position:'top'
+                            },
+                          legend:{
+                              labels: { fontFamily: 'comfortaa' },
+                              display:true,
+                              position:'top'
                             }
                         }}
                     />

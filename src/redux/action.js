@@ -30,8 +30,18 @@ export const saveSelectedLocation = (payload) => ({
     payload
   })
 
-export const savePieData = (payload) => ({
-    type: 'ADD_PIE_CHART_DATA',
+export const savePieDataHourly = (payload) => ({
+    type: 'ADD_PIE_CHART_HOURLY',
+    payload
+  })
+
+export const savePieDataDaily = (payload) => ({
+    type: 'ADD_PIE_CHART_DAILY',
+    payload
+  })
+
+export const unixToHours = (payload) => ({
+    type: 'UNIX_TO_HOURS',
     payload
   })
 

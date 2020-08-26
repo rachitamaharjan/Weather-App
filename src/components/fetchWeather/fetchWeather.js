@@ -28,8 +28,9 @@ class FetchWeather extends React.Component {
    
 
     render() {
-        if (this.props.weatherData.current !== undefined || this.props.weatherData.hourly !== undefined  || this.props.weatherData.daily !== undefined){
-            console.log('uuu', this.props.weatherData.current.weather[0].description)
+        if (this.props.weatherData.current){
+            if(this.props.unixToHours.length ){
+            console.log('uuu', this.props.unixToHours)}
             // var tempInCelsius = this.toCelsius(this.props.weatherData.current.temp)
         return (
             <div className = 'weather-details clearfix'>
@@ -63,13 +64,16 @@ class FetchWeather extends React.Component {
 
                 <ul className = 'chart-container'>
                     <li>
-                        <WeatherPieChart weatherData = {this.props.pieChartValues}/>
+                        <WeatherPieChart weatherData = {this.props.pieChartHourly} text = {'Today\'s Overall Weather in %'}/>
+                    </li>
+                    <li>
+                        <WeatherPieChart weatherData = {this.props.pieChartDaily} text = {'This Week\'s Overall Weather in %'}/>
                     </li>
                     <li>
                         <DailyLineChart weatherData = {this.props.weatherData}/>
                     </li>
                     <li>
-                        <HourlyLineChart weatherData = {this.props.weatherData}/>
+                        <HourlyLineChart weatherData = {this.props.weatherData} time = {this.props.unixToHours}/>
                     </li>
                 </ul>
                 {/* Hourly: {this.props.weatherData.hourly.map(each => <div>{each.temp} </div>)}
@@ -95,8 +99,10 @@ const mapStateToProps = (state) => (
       latitude: state.latitude,
       longitude: state.longitude,
       weatherData: state.weatherData,
-      pieChartValues: state.pieChartValues,
-      selectedLocation: state.selectedLocation
+      pieChartHourly: state.pieChartHourly,
+      pieChartDaily: state.pieChartDaily,
+      selectedLocation: state.selectedLocation,
+      unixToHours: state.unixToHours
     }
 )
 

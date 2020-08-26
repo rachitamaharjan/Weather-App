@@ -26,7 +26,7 @@ class CurrentLocation extends React.Component{
   }
   
   componentWillReceiveProps(nextProps){
-    console.log('willreceive', nextProps)
+    // console.log('willreceive', nextProps)
     const {latitude,longitude,fetchSaveWeather} = nextProps
     if(latitude && longitude){
     fetchSaveWeather(latitude,longitude)

@@ -8,9 +8,9 @@ import './chart.css';
 export class HourlyLineChart extends React.Component {
   constructor(props) {
     super(props)
+    console.log('props hourly time',this.props.time)
     this.state= {
-        labels: ['Sun', 'Mon', 'Tue',
-                 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        labels: this.props.time,
         datasets: [
           {
             label: 'Temperature',
@@ -22,20 +22,8 @@ export class HourlyLineChart extends React.Component {
             pointHoverBorderColor: 'rgb(217, 245, 60)',
             borderWidth: 2,
             pointHoverBorderWidth: 5,
-            data: this.props.weatherData.hourly.map(each => each.temp )
+            data: this.props.weatherData.hourly.map( each => each.temp )
           },
-          // {
-          //   label: 'Pressure',
-          //   fill: true,
-          //   lineTension: 0.5,
-          //   backgroundColor: 'rgba(29, 35, 67, 0.9)',
-          //   borderColor: 'black',
-          //   pointBackgroundColor: 'white',
-          //   pointHoverBorderColor: '#8f9ffc',
-          //   borderWidth: 2,
-          //   pointHoverBorderWidth: 5,
-          //   data: this.props.weatherData.hourly.map(each => each.pressure )
-          // },
           {
             label: 'Humidity',
             fill: true,
@@ -46,7 +34,7 @@ export class HourlyLineChart extends React.Component {
             pointHoverBorderColor: '#e9515c',
             borderWidth: 2,
             pointHoverBorderWidth: 5,
-            data: this.props.weatherData.hourly.map(each => each.humidity )
+            data: this.props.weatherData.hourly.map( each => each.humidity )
           },
           {
             label: 'Dew Point',

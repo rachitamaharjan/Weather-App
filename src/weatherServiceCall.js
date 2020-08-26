@@ -1,84 +1,116 @@
 import {  saveweatherData } from "./redux/action";
-import {  savePieData } from "./redux/action";
+import {  savePieDataHourly } from "./redux/action";
+import {  savePieDataDaily } from "./redux/action";
+import {  unixToHours } from "./redux/action";
 
 export function weatherServiceCall(latitude,longitude){
 
     return (dispatch, getState) => {
-      console.log('getstate', getState())
-        // fetch(`http://`)
+      // console.log('getstate', getState())
         fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=780a4551ff3e6ac4892ab54ec1e701ec&units=metric`)
         .then(response => {
-          console.log('single response',response)
+          // console.log('single response',response)
           return response.json()   //conversion to json
       }).then(val => {
           console.log('weather',val)
           dispatch(saveweatherData(val))
-          weatherCheckCount(val,dispatch)
-        //   this.props.saveWeather(val)
+          weatherCheckCount(val.hourly,dispatch,'hour')
+          weatherCheckCount(val.daily,dispatch, 'day')
+          convertTime(val, dispatch)
           })
     }
+}
 
 
+function convertTime(weatherVal, dispatch){
 
-   
+  const convertedHours = weatherVal.hourly.map(val => {
+    var a = new Date(val.dt * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    // var sec = a.getSeconds();
+    var time = hour + ':' + min ;
+    return time;
+    // console.log('date', time)
+  })
+  // console.log('hours', convertedHours)
+
+  dispatch(unixToHours({ //real form cloudNum:cloudNum
+    unixToHours: convertedHours, 
+  }))
 
 }
+
+
 //weatherCountName
- function weatherCheckCount(weatherVal,dispatch){
-   console.log('weatherval',weatherVal)
+ function weatherCheckCount(weatherVal,dispatch, option){
+  //  console.log('weatherval',weatherVal)
   let cloudNum = 0, clearNum = 0, snowNum = 0, rainNum = 0, drizzleNum = 0, thunderstormNum = 0;
-  weatherVal.hourly.map(val => {
+  const chartTimes = weatherVal.map(val => {
   switch(val.weather[0].main){
       
       case 'Clouds':
           cloudNum++;
           break;
-          // console.log('clouds vitra',cloudNum)
-          // this.setState( {...state, cloudNum:cloudNum++ })
 
       case 'Clear':
           clearNum++;
           break;
 
-          // return {...state, Clear: }
-
       case 'Snow':
           snowNum++;
           break;
-
-          // return {...state, Snow: }
 
       case 'Rain':
           rainNum++;
           break;
 
-          // return {...state, Rain: }
-
       case 'Drizzle':
           drizzleNum++;
           break;
 
-          // return {...state, Drizzle: }
-
       case 'Thunderstorm':
           thunderstormNum++;
           break;
-
-          // return {...state, Thunderstorm: }
           
     default:
-      //   weatherVal = 0;
       
-  }  
-  
-})
+    } 
+  })
 
-dispatch(savePieData({ //real form cloudNum:cloudNum
-  cloudNum, 
-  clearNum, 
-  snowNum,
-  rainNum,
-  drizzleNum,
-  thunderstormNum
-}))
+  cloudNum = (cloudNum/(chartTimes.length))*100
+  clearNum = (clearNum/(chartTimes.length))*100
+  snowNum = (snowNum/(chartTimes.length))*100
+  rainNum = (rainNum/(chartTimes.length))*100
+  drizzleNum = (drizzleNum/(chartTimes.length))*100
+  thunderstormNum = (thunderstormNum/(chartTimes.length))*100
+  
+  if(option == 'hour'){
+
+    dispatch(savePieDataHourly({ //real form cloudNum:cloudNum
+      cloudNum, 
+      clearNum, 
+      snowNum,
+      rainNum,
+      drizzleNum,
+      thunderstormNum
+    }))
+  }
+
+  if(option == 'day'){
+    console.log('inside day pie chart', weatherVal)
+
+    dispatch(savePieDataDaily({ //real form cloudNum:cloudNum
+      cloudNum, 
+      clearNum, 
+      snowNum,
+      rainNum,
+      drizzleNum,
+      thunderstormNum
+    }))
+  }
 }

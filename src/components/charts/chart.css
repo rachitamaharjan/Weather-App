@@ -4,11 +4,18 @@
 }
 
 .chart-container li {
-    padding: 10px 30px 10px 30px;
+    margin: 30px 80px 30px 30px;
 }
 
 .daily-line-chart, .hourly-line-chart {
-    padding: 10px 40px 10px 40px;
+    /* padding: 10px 40px 10px 40px; */
     /* max-width: 500px; */
     /* justify-content: center; */
 }
+
+canvas {
+    background-color: #FFF5F5;
+    border-radius: 50px;
+    padding: 20px;
+    font-weight: 800;
+ }

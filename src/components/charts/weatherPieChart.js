@@ -11,8 +11,7 @@ export class WeatherPieChart extends React.Component {
     }
 
     render() {
-      console.log('weatherdata pie',this.props.weatherData)
-
+      
       if (this.props.weatherData === undefined || Object.keys(this.props.weatherData).length === 0 ){
         return null
       }
@@ -24,25 +23,31 @@ export class WeatherPieChart extends React.Component {
                 {
                   label: 'Weather',
                   backgroundColor: [
+                    '#91bffc',
+                    'rgb(255, 230, 109)',
+                    '#FFF5F5',
                     '#1D2343',
                     '#65BDC0',
-                    '#EE777F',
-                    'rgb(255, 230, 109)',
-                    '#FFF5F5'
+                    '#EE777F '
                   ],
                   hoverBackgroundColor: [
-                  '#501800',
-                  '#4B5000',
-                  '#175000',
+                  '#e4e4f0',
+                  'rgb(218, 203, 132)',
+                  '#f5d1d1',
                   '#003350',
-                  '#35014F'
+                  '#73d1d4',
+                  '#c7777d'
                   ],
-                  data: [this.props.weatherData.cloudNum, 
-                    this.props.weatherData.clearNum, 
-                    this.props.weatherData.snowNum, 
-                    this.props.weatherData.rainNum, 
-                    this.props.weatherData.drizzleNum,
-                    this.props.weatherData.thunderstormNum ]
+                  borderColor:['black','black','black','black','black','black'],
+                  borderWidth: 2,
+                  hoverBorderColor: ['gray','gray','gray','gray','gray','gray'],
+                  hoverBorderWidth: 5,
+                  data: [Number(this.props.weatherData.cloudNum).toFixed(2), 
+                    Number(this.props.weatherData.clearNum).toFixed(2), 
+                    Number(this.props.weatherData.snowNum).toFixed(2), 
+                    Number(this.props.weatherData.rainNum).toFixed(2), 
+                    Number(this.props.weatherData.drizzleNum).toFixed(2),
+                    Number(this.props.weatherData.thunderstormNum).toFixed(2) ]
                 }
               ]
             }
@@ -53,7 +58,7 @@ export class WeatherPieChart extends React.Component {
                         options={{
                             title:{
                             display:true,
-                            text:'This Week\' Weather Values',
+                            text:this.props.text,
                             fontColor: 'black',
                             fontFamily: 'comfortaa',
                             fontSize:20
@@ -64,8 +69,12 @@ export class WeatherPieChart extends React.Component {
                                },
                             display:true,
                             position:'top'
-                            }
+                            },
+                            chartArea: {
+                              backgroundColor: 'red'
+                          }
                         }}
+                        
                     />
                     </div>
             )}
