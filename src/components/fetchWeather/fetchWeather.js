@@ -39,6 +39,7 @@ class FetchWeather extends React.Component {
                         {/* <div>Latitude in fetch = {this.props.latitude}</div>
                         <div>Longitude in fetch = {this.props.longitude}</div> */}
                         <div className = 'time-temp-desc'>
+                            <div className = 'selected-location'>{this.props.selectedLocation}</div>
                             <div className = 'timezone'>{this.props.weatherData.timezone}</div>
                             <div className = 'temp'> <img src = {temp_icon}/> {this.props.weatherData.current.temp}℃</div>
                             <div className = 'weather-desc'> {this.props.weatherData.current.weather[0].description} </div>
@@ -94,7 +95,8 @@ const mapStateToProps = (state) => (
       latitude: state.latitude,
       longitude: state.longitude,
       weatherData: state.weatherData,
-      pieChartValues: state.pieChartValues
+      pieChartValues: state.pieChartValues,
+      selectedLocation: state.selectedLocation
     }
 )
 

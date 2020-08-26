@@ -25,9 +25,14 @@ export const saveweatherData = (payload) => ({
     payload
   })
 
+export const saveSelectedLocation = (payload) => ({
+    type: 'SAVE_SELECTED_LOCATION',
+    payload
+  })
+
 export const savePieData = (payload) => ({
     type: 'ADD_PIE_CHART_DATA',
     payload
   })
 
-
+  

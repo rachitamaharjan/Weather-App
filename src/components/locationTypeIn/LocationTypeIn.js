@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import ReactHTMLDatalist from "react-html-datalist";
 import {saveEnteredLatitude} from '../../redux/action'
 import {saveEnteredLongitude} from '../../redux/action'
+import {saveSelectedLocation} from '../../redux/action'
 import './locationTypeIn.css'
 // ReactReduxContext; 
 
@@ -16,7 +17,8 @@ class LocationTypeIn extends React.Component{
           inputValue: '',
           enteredLatitude: 0,
           enteredLongitude: 0,
-          allLocation: {}
+          allLocation: {},
+          selectedLocation: '',
           // inputLongitude: '',
         //   inputValue: ''
         }
@@ -39,6 +41,7 @@ class LocationTypeIn extends React.Component{
       if(this.state.enteredLatitude !== 0){
         this.props.saveEnteredLatitude(this.state.enteredLatitude)
         this.props.saveEnteredLongitude(this.state.enteredLongitude)
+        this.props.saveSelectedLocation(this.state.selectedLocation)
       }
     }
 
@@ -60,7 +63,8 @@ class LocationTypeIn extends React.Component{
             this.setState({
               allLocation: val,
               enteredLatitude: val.features[0].geometry.coordinates[1],
-              enteredLongitude: val.features[0].geometry.coordinates[0]
+              enteredLongitude: val.features[0].geometry.coordinates[0],
+              selectedLocation: val.features[0].properties.name
 
             })
 
@@ -106,7 +110,8 @@ class LocationTypeIn extends React.Component{
 const mapDispatchToProps = dispatch =>{
     return{
         saveEnteredLatitude: (val) => dispatch(saveEnteredLatitude(val)),
-        saveEnteredLongitude: (val) => dispatch(saveEnteredLongitude(val))
+        saveEnteredLongitude: (val) => dispatch(saveEnteredLongitude(val)),
+        saveSelectedLocation: (val) => dispatch(saveSelectedLocation(val)),
     }
 }
  

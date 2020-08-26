@@ -4,7 +4,8 @@ const initialState = {
     EnteredLatitude: '',
     EnteredLongitude: '',
     weatherData: {},
-    pieChartValues: {}
+    pieChartValues: {},
+    selectedLocation: ''
   }
 
   export const mainReducer = (state = initialState, action) => {
@@ -27,6 +28,9 @@ const initialState = {
 
         case 'ADD_PIE_CHART_DATA':
             return {...state, pieChartValues: action.payload}
+
+        case 'SAVE_SELECTED_LOCATION':
+            return {...state, selectedLocation: action.payload}
             
       default:
         return state;
