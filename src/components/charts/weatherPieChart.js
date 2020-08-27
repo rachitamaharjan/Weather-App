@@ -25,7 +25,7 @@ export class WeatherPieChart extends React.Component {
                   backgroundColor: [
                     '#91bffc',
                     'rgb(255, 230, 109)',
-                    '#FFF5F5',
+                    '#FFFFFF',
                     '#1D2343',
                     '#65BDC0',
                     '#EE777F '
