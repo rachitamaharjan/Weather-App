@@ -4,6 +4,7 @@ import ReactHTMLDatalist from "react-html-datalist";
 import {saveEnteredLatitude} from '../../redux/action'
 import {saveEnteredLongitude} from '../../redux/action'
 import {saveSelectedLocation} from '../../redux/action'
+import {rainbowLogo} from './search_blue.ico'
 import './locationTypeIn.css'
 // ReactReduxContext; 
 
@@ -78,6 +79,7 @@ class LocationTypeIn extends React.Component{
 
         return(
             <div className = 'location-search-box'>
+                {/* <img src = {rainbowLogo} /> */}
                 <input type = "text" list = 'location-values' id = 'location-input' placeholder="Search Place..."  value = {this.state.inputValue} onChange = {this.onChangeInput}/>
                 <datalist id= 'location-values'> {this.state.allLocation.features.map(eachLocation => 
                   
@@ -91,6 +93,7 @@ class LocationTypeIn extends React.Component{
       else{
         return(
           <div className = 'location-search-box'>
+                {/* <img src = {rainbowLogo} /> */}
                 <input type = "text" list = 'location-values' id = 'location-input' placeholder="Search Place..." value = {this.state.inputValue} onChange = {this.onChangeInput}/>
                 {/* <input list="browsers" name="browser"> */}
                 <input type='button' className = 'location-search-button' onClick= {this.addLatLong} />

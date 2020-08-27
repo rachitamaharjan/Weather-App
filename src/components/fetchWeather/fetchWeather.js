@@ -31,6 +31,7 @@ class FetchWeather extends React.Component {
         if (this.props.weatherData.current){
             if(this.props.unixToHours.length ){
             console.log('uuu', this.props.unixToHours)}
+            if(this.props.weatherData.current.weather[0].main){}
             // var tempInCelsius = this.toCelsius(this.props.weatherData.current.temp)
         return (
             <div className = 'weather-details clearfix'>
