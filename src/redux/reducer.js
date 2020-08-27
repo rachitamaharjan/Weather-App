@@ -38,7 +38,8 @@ const initialState = {
             return {...state, selectedLocation: action.payload}
 
         case 'UNIX_TO_HOURS':
-            return {...state, unixToHours: action.payload}
+            console.log('reducer unixto hours',action.payload)
+            return {...state, unixToHours: action.payload.unixToHours}
             
       default:
         return state;

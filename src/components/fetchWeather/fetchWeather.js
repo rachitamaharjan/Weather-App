@@ -74,7 +74,7 @@ class FetchWeather extends React.Component {
                         <DailyLineChart weatherData = {this.props.weatherData}/>
                     </li>
                     <li>
-                        <HourlyLineChart weatherData = {this.props.weatherData} time = {this.props.unixToHours}/>
+                        <HourlyLineChart weatherData = {this.props.weatherData} timeHourly = {this.props.unixToHours}/>
                     </li>
                 </ul>
                 {/* Hourly: {this.props.weatherData.hourly.map(each => <div>{each.temp} </div>)}

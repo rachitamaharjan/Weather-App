@@ -31,9 +31,14 @@ function convertTime(weatherVal, dispatch){
     var month = months[a.getMonth()];
     var date = a.getDate();
     var hour = a.getHours();
-    var min = a.getMinutes();
+    if (a.getHours()>12){
+      hour = hour % 12
+      var meridiem = ' pm'
+    }
+    else{ var meridiem = ' am' }
+    // var min = a.getMinutes();
     // var sec = a.getSeconds();
-    var time = hour + ':' + min ;
+    var time = hour + ':' + '00' + meridiem ;
     return time;
     // console.log('date', time)
   })

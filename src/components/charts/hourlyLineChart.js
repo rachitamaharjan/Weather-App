@@ -3,53 +3,60 @@ import {Line} from 'react-chartjs-2';
 import { connect } from "react-redux";
 import './chart.css';
 
+const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
+  return{
+    labels: timeHourly,
+    datasets: [
+      {
+        label: 'Temperature',
+        fill: true,
+        lineTension: 0.5,
+        backgroundColor: 'rgba(255, 230, 109, 0.6)',
+        borderColor: 'black',
+        pointBackgroundColor: 'white',
+        pointHoverBorderColor: 'rgb(217, 245, 60)',
+        borderWidth: 2,
+        pointHoverBorderWidth: 5,
+        data: weatherDataHourly.map( each => each.temp )
+      },
+      {
+        label: 'Humidity',
+        fill: true,
+        lineTension: 0.5,
+        backgroundColor: 'rgba(238, 119, 127, 0.9)',
+        borderColor: 'black',
+        pointBackgroundColor: 'white',
+        pointHoverBorderColor: '#e9515c',
+        borderWidth: 2,
+        pointHoverBorderWidth: 5,
+        data: weatherDataHourly.map( each => each.humidity )
+      },
+      {
+        label: 'Dew Point',
+        fill: true,
+        lineTension: 0.5,
+        backgroundColor: 'rgba(101, 189, 192, 1)',
+        borderColor: 'black',
+        pointBackgroundColor: 'white',
+        pointHoverBorderColor: '#8ff6fa',
+        borderWidth: 2,
+        pointHoverBorderWidth: 5,
+        data: weatherDataHourly.map(each => each.dew_point )
+      }
+    ]
+  }
 
+}
 
 export class HourlyLineChart extends React.Component {
   constructor(props) {
     super(props)
-    console.log('props hourly time',this.props.time)
-    this.state= {
-        labels: this.props.time,
-        datasets: [
-          {
-            label: 'Temperature',
-            fill: true,
-            lineTension: 0.5,
-            backgroundColor: 'rgba(255, 230, 109, 0.6)',
-            borderColor: 'black',
-            pointBackgroundColor: 'white',
-            pointHoverBorderColor: 'rgb(217, 245, 60)',
-            borderWidth: 2,
-            pointHoverBorderWidth: 5,
-            data: this.props.weatherData.hourly.map( each => each.temp )
-          },
-          {
-            label: 'Humidity',
-            fill: true,
-            lineTension: 0.5,
-            backgroundColor: 'rgba(238, 119, 127, 0.9)',
-            borderColor: 'black',
-            pointBackgroundColor: 'white',
-            pointHoverBorderColor: '#e9515c',
-            borderWidth: 2,
-            pointHoverBorderWidth: 5,
-            data: this.props.weatherData.hourly.map( each => each.humidity )
-          },
-          {
-            label: 'Dew Point',
-            fill: true,
-            lineTension: 0.5,
-            backgroundColor: 'rgba(101, 189, 192, 1)',
-            borderColor: 'black',
-            pointBackgroundColor: 'white',
-            pointHoverBorderColor: '#8ff6fa',
-            borderWidth: 2,
-            pointHoverBorderWidth: 5,
-            data: this.props.weatherData.hourly.map(each => each.dew_point )
-          }
-        ]
-      }
+    console.log('props',props)
+    console.log('props hourly time',this.props.timeHourly)
+}
+
+componentWillReceiveProps(newProps){
+  console.log('updated props',newProps)
 }
 
 render() {
@@ -65,15 +72,25 @@ render() {
             <div className = 'daily-line-chart'>
                 {/* {this.props.weatherData.daily.map(each => <div>{each.temp.day}</div> )} */}
                                 <Line
-                    data={this.state}
+                    data={getLineChartConfig(this.props.timeHourly, this.props.weatherData.hourly)}
                     options={{
                         title:{
                         display:true,
                         text:'Today\'s Values per hour',
                         fontFamily: 'comfortaa',
                         fontColor: 'black',
-                        fontSize:20
-                        },
+                        font: function(context) {
+                          var width = context.chart.width;
+                          var size = Math.round(width / 32);
+          
+                          return {
+                              weight: 'bold',
+                              size: size
+                          };
+                          },
+                        formatter: function(value) {
+                          return Math.round(value * 10) / 10
+                       }},
                         scales: {
                           xAxes: [{
                               gridLines: {
