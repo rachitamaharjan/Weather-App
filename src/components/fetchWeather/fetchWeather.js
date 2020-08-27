@@ -71,7 +71,7 @@ class FetchWeather extends React.Component {
                         <WeatherPieChart weatherData = {this.props.pieChartDaily} text = {'This Week\'s Overall Weather in %'}/>
                     </li>
                     <li>
-                        <DailyLineChart weatherData = {this.props.weatherData}/>
+                        <DailyLineChart weatherData = {this.props.weatherData} timeDay = {this.props.unixToDay}/>
                     </li>
                     <li>
                         <HourlyLineChart weatherData = {this.props.weatherData} timeHourly = {this.props.unixToHours}/>
@@ -103,7 +103,8 @@ const mapStateToProps = (state) => (
       pieChartHourly: state.pieChartHourly,
       pieChartDaily: state.pieChartDaily,
       selectedLocation: state.selectedLocation,
-      unixToHours: state.unixToHours
+      unixToHours: state.unixToHours,
+      unixToDay: state.unixToDay
     }
 )
 

@@ -7,7 +7,8 @@ const initialState = {
     pieChartHourly: {},
     pieChartDaily: {},
     selectedLocation: '',
-    unixToHours: []
+    unixToHours: [],
+    unixToDay: []
   }
 
   export const mainReducer = (state = initialState, action) => {
@@ -38,8 +39,11 @@ const initialState = {
             return {...state, selectedLocation: action.payload}
 
         case 'UNIX_TO_HOURS':
-            console.log('reducer unixto hours',action.payload)
             return {...state, unixToHours: action.payload.unixToHours}
+
+        case 'UNIX_TO_DAY':
+            console.log('reducer unixto hours',action.payload)
+            return {...state, unixToDay: action.payload.unixToDay}
             
       default:
         return state;

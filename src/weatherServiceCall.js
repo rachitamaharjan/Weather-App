@@ -2,6 +2,7 @@ import {  saveweatherData } from "./redux/action";
 import {  savePieDataHourly } from "./redux/action";
 import {  savePieDataDaily } from "./redux/action";
 import {  unixToHours } from "./redux/action";
+import {  unixToDay } from "./redux/action";
 
 export function weatherServiceCall(latitude,longitude){
 
@@ -16,20 +17,23 @@ export function weatherServiceCall(latitude,longitude){
           dispatch(saveweatherData(val))
           weatherCheckCount(val.hourly,dispatch,'hour')
           weatherCheckCount(val.daily,dispatch, 'day')
-          convertTime(val, dispatch)
+          convertTimeHour(val, dispatch)
+          convertTimeDay(val, dispatch)
           })
     }
 }
 
 
-function convertTime(weatherVal, dispatch){
+function convertTimeDay(weatherVal, dispatch){
 
-  const convertedHours = weatherVal.hourly.map(val => {
+  const convertedDay = weatherVal.daily.map(val => {
     var a = new Date(val.dt * 1000);
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     var year = a.getFullYear();
     var month = months[a.getMonth()];
     var date = a.getDate();
+    var day = days[a.getDay()];
     var hour = a.getHours();
     if (a.getHours()>12){
       hour = hour % 12
@@ -38,13 +42,31 @@ function convertTime(weatherVal, dispatch){
     else{ var meridiem = ' am' }
     // var min = a.getMinutes();
     // var sec = a.getSeconds();
+    var time = day ;
+    console.log('day', time)
+    return time;
+  })
+  dispatch(unixToDay({ 
+    unixToDay: convertedDay, 
+  }))
+
+}
+
+function convertTimeHour(weatherVal, dispatch){
+
+  const convertedHours = weatherVal.hourly.map(val => {
+
+    var a = new Date(val.dt * 1000);
+    var hour = a.getHours();
+    if (a.getHours()>12){
+      hour = hour % 12
+      var meridiem = ' pm'
+    }
+    else{ var meridiem = ' am' }
     var time = hour + ':' + '00' + meridiem ;
     return time;
-    // console.log('date', time)
   })
-  // console.log('hours', convertedHours)
-
-  dispatch(unixToHours({ //real form cloudNum:cloudNum
+  dispatch(unixToHours({ 
     unixToHours: convertedHours, 
   }))
 

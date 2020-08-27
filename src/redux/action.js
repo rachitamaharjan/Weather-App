@@ -45,4 +45,9 @@ export const unixToHours = (payload) => ({
     payload
   })
 
+export const unixToDay = (payload) => ({
+    type: 'UNIX_TO_DAY',
+    payload
+  })
+
   

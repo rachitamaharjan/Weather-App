@@ -1,6 +1,5 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
-import { connect } from "react-redux";
 import './chart.css';
 
 const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
@@ -51,27 +50,15 @@ const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
 export class HourlyLineChart extends React.Component {
   constructor(props) {
     super(props)
-    console.log('props',props)
-    console.log('props hourly time',this.props.timeHourly)
-}
+  }
 
-componentWillReceiveProps(newProps){
-  console.log('updated props',newProps)
-}
+
 
 render() {
 
-        // this.setState({
-        //     datasets: [{
-        //         data: [50, 40, 50, 40, 50, 40, 50, 40]
-        //     }]
-            
-        // })
-        // this.props.weatherData.daily.map(each => each.temp.day )
         return (
             <div className = 'daily-line-chart'>
-                {/* {this.props.weatherData.daily.map(each => <div>{each.temp.day}</div> )} */}
-                                <Line
+                <Line
                     data={getLineChartConfig(this.props.timeHourly, this.props.weatherData.hourly)}
                     options={{
                         title:{
@@ -82,36 +69,26 @@ render() {
                         font: function(context) {
                           var width = context.chart.width;
                           var size = Math.round(width / 32);
-          
                           return {
                               weight: 'bold',
                               size: size
-                          };
-                          },
+                          }},
                         formatter: function(value) {
                           return Math.round(value * 10) / 10
-                       }},
+                        }},
                         scales: {
                           xAxes: [{
-                              gridLines: {
-                                  display: false,
-                              }
+                              gridLines: { display: false }
                           }],
                           yAxes: [{
-                              gridLines: {
-                                  display: false,
-                              },
-                              ticks:{
-                                display: false,
-                              }
+                              gridLines: { display: false },
+                              ticks: { display: false }
                           }]
-                      },
+                        },
                         legend:{
-                          labels: {
-                            fontFamily: 'comfortaa'
-                           },
-                        display:true,
-                        position:'top'
+                          labels: { fontFamily: 'comfortaa' },
+                          display:true,
+                          position:'top'
                         }
                     }}
                 />
@@ -119,4 +96,3 @@ render() {
         )}
 }
 
-// export default connect(mapStateToProps, 0) (LineChart)

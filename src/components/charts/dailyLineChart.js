@@ -1,16 +1,10 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
-import { connect } from "react-redux";
 import './chart.css';
 
-
-
-export class DailyLineChart extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state= {
-            labels: ['Sun', 'Mon', 'Tue',
-                     'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+const getLineChartConfig = (timeDay, weatherDataDay) =>{
+  return{
+    labels: timeDay,
             datasets: [
               {
                 label: 'Temperature',
@@ -22,7 +16,7 @@ export class DailyLineChart extends React.Component {
                 pointHoverBorderColor: 'rgb(217, 245, 60)',
                 borderWidth: 2,
                 pointHoverBorderWidth: 5,
-                data: this.props.weatherData.daily.map(each => each.temp.day )
+                data: weatherDataDay.map(each => each.temp.day )
               },
               {
                 label: 'Humidity',
@@ -34,7 +28,7 @@ export class DailyLineChart extends React.Component {
                 pointHoverBorderColor: '#e9515c',
                 borderWidth: 2,
                 pointHoverBorderWidth: 5,
-                data: this.props.weatherData.daily.map(each => each.humidity )
+                data: weatherDataDay.map(each => each.humidity )
               },
               {
                 label: 'Dew Point',
@@ -46,17 +40,24 @@ export class DailyLineChart extends React.Component {
                 pointHoverBorderColor: '#8ff6fa',
                 borderWidth: 2,
                 pointHoverBorderWidth: 5,
-                data: this.props.weatherData.daily.map(each => each.dew_point )
+                data: weatherDataDay.map(each => each.dew_point )
               }
             ]
-          }
+  }
+}
+
+
+export class DailyLineChart extends React.Component {
+
+    constructor(props) {
+        super(props)
     }
 
     render() {
             return (
                 <div className = 'daily-line-chart'>
                     <Line
-                        data={ this.state }
+                        data={ getLineChartConfig(this.props.timeDay, this.props.weatherData.daily) }
                         options={{
                           title:{
                             display:true,
@@ -65,7 +66,7 @@ export class DailyLineChart extends React.Component {
                             fontFamily: 'comfortaa',
                             fontSize:20
                             },
-                          scales: {
+                          scales:{
                             xAxes: [{ gridLines: { display: false } }],
                             yAxes: [{
                                 gridLines: { display: false },
@@ -84,4 +85,3 @@ export class DailyLineChart extends React.Component {
 
 }
 
-// export default connect(mapStateToProps, 0) (LineChart)
