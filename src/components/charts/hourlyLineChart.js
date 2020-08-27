@@ -15,7 +15,6 @@ const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
         pointBackgroundColor: 'white',
         pointHoverBorderColor: 'rgb(217, 245, 60)',
         borderWidth: 2,
-        // pointRadius:1,
         pointHoverBorderWidth: 5,
         data: weatherDataHourly.map( each => each.temp )
       },
@@ -28,7 +27,6 @@ const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
         pointBackgroundColor: 'white',
         pointHoverBorderColor: '#e9515c',
         borderWidth: 2,
-        // pointRadius:1,
         pointHoverBorderWidth: 5,
         data: weatherDataHourly.map( each => each.humidity )
       },
@@ -41,7 +39,6 @@ const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
         pointBackgroundColor: 'white',
         pointHoverBorderColor: '#8ff6fa',
         borderWidth: 2,
-        // pointRadius:1,
         pointHoverBorderWidth: 5,
         data: weatherDataHourly.map(each => each.dew_point )
       }
@@ -70,38 +67,31 @@ render() {
                         fontFamily: 'comfortaa',
                         fontColor: 'black',
                         fontSize: 20,
-                        maintainAspectRatio: false,
+                        maintainAspectRatio: true,
                         },
                         scales: {
                           xAxes: [{
-                            gridLines: {
-                                display: false
-                            },
-                            ticks: {
+                              gridLines: { display: false },
+                              ticks: {
                                 fontSize: 8,
                                 beginAtZero: true,
-                            },
-                            /* Keep x-axis width proportional to overall chart width */
-                            afterFit: function(scale) {
-                                var chartWidth = scale.chart.width;
-                                var new_width=chartWidth*0.40;
-        
-                                scale.width = new_width;
-                            }
-                        }],
+                              },
+                              /* Keep x-axis width proportional to overall chart width */
+                              afterFit: function(scale) {
+                                  var chartWidth = scale.chart.width;
+                                  var new_width=chartWidth*0.40;
+                                  scale.width = new_width;
+                              }
+                          }],
                           yAxes: [{
                               gridLines: { display: false },
                               ticks: { display: false }
                           }]
                         },
                         legend:{
-                          labels: { 
-                            // boxWidth : 20,
-                            fontFamily: 'comfortaa',
-                            // fontSize: 10,
-                        },
-                          display:true,
-                          position:'top',
+                            labels: { fontFamily: 'comfortaa' },
+                            display:true,
+                            position:'top',
                         }
                     }}
                     plugins = {[{
@@ -123,9 +113,7 @@ render() {
                             c.legend.bottom = 40;
                             c.chartArea.top = size * 4;
                           }
-                          c.scales['x-axis-0'].options.ticks.minor.fontSize = size;
-                          // c.scales['y-axis-0'].ctx.height = 500;
-                          
+                          c.scales['x-axis-0'].options.ticks.minor.fontSize = size;                          
                           console.log('c value',c)
                       }
                    }]}

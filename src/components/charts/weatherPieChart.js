@@ -31,30 +31,32 @@ export class WeatherPieChart extends React.Component {
                     '#EE777F '
                   ],
                   hoverBackgroundColor: [
-                  '#e4e4f0',
-                  'rgb(218, 203, 132)',
-                  '#f5d1d1',
-                  '#003350',
-                  '#73d1d4',
-                  '#c7777d'
+                    '#e4e4f0',
+                    'rgb(218, 203, 132)',
+                    '#f5d1d1',
+                    '#003350',
+                    '#73d1d4',
+                    '#c7777d'
                   ],
                   borderColor:['black','black','black','black','black','black'],
                   borderWidth: 2,
                   hoverBorderColor: ['gray','gray','gray','gray','gray','gray'],
                   hoverBorderWidth: 5,
-                  data: [Number(this.props.weatherData.cloudNum).toFixed(2), 
+                  data: [
+                    Number(this.props.weatherData.cloudNum).toFixed(2), 
                     Number(this.props.weatherData.clearNum).toFixed(2), 
                     Number(this.props.weatherData.snowNum).toFixed(2), 
                     Number(this.props.weatherData.rainNum).toFixed(2), 
                     Number(this.props.weatherData.drizzleNum).toFixed(2),
-                    Number(this.props.weatherData.thunderstormNum).toFixed(2) ]
+                    Number(this.props.weatherData.thunderstormNum).toFixed(2) 
+                  ]
                 }
               ]
             }
             return (
                 <div className = 'weather-pie-chart'>
-                                    <Pie
-                        data={pieChartData}
+                    <Pie
+                        data={ pieChartData }
                         options={{
                             title:{
                             display:true,
@@ -74,7 +76,22 @@ export class WeatherPieChart extends React.Component {
                               backgroundColor: 'red'
                           }
                         }}
-                        
+                        plugins = {[{
+                          /* Adjust axis labelling font size according to chart size */
+                          beforeDraw: function(c) {
+                              var chartHeight = c.chart.height;
+                              if(chartHeight < 250){
+                                var size = chartHeight * 5 / 100;
+                                var boxSize = chartHeight * 10 / 100;
+                                c.legend.options.labels.boxWidth = boxSize;
+                                c.legend.options.labels.fontSize = size;
+                                c.options.title.fontSize = size * 2;
+                                c.legend.top = 30;
+                                c.legend.bottom = 40;
+                                // c.chartArea.top = size * 4;
+                              }
+                          }
+                       }]}
                     />
                     </div>
             )}
