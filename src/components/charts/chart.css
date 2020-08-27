@@ -4,7 +4,7 @@
 }
 
 .chart-container li {
-    margin: 30px 80px 30px 30px;
+    margin: 30px 70px 30px 30px;
 }
 
 .daily-line-chart, .hourly-line-chart {
@@ -19,4 +19,14 @@ canvas {
     padding: 20px;
     font-weight: 800;
     filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.4));
+ }
+
+ @media (max-width: 481px) {
+
+    canvas{
+        display: block;
+        height: 100% !important;
+        width: 100% !important;
+    }
+
  }

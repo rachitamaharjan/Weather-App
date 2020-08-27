@@ -49,15 +49,15 @@ class FetchWeather extends React.Component {
                     </div>
                 </div>
                 <ul className = 'pres-hum'>
-                    <div>
+                    <div className = 'pressure-container'>
                         <li className = 'pressure'> <img src = {pressure_icon}/> <br/> {this.props.weatherData.current.pressure} </li>
                         <p>Pressure</p>
                     </div>
-                    <div>
+                    <div className = 'humidity-container'>
                         <li className = 'humidity'> <img src = {humidity_icon}/> <br/> {this.props.weatherData.current.humidity}% </li>
                         <p>Humidity</p>
                     </div>
-                    <div>
+                    <div className = 'dew-container'>
                         <li className = 'dew-point'> <img src = {dew_icon}/> <br/> {this.props.weatherData.current.dew_point} </li>
                         <p>Dew Point</p>
                     </div>
