@@ -6,7 +6,7 @@ export default (props) =>{
     return(
         <div className = 'waiting-container'>
                  <div className = 'waitingForData'>
-                     <div className = 'waiting-packman'><img src = {loading}/></div>
+                     <div className = 'waiting-packman'><img src = {loading} alt = ''/></div>
                      <div >Getting Weather Information</div>
                  </div>
             </div>

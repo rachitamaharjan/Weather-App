@@ -11,7 +11,7 @@ export function weatherServiceCall(latitude,longitude){
         .then(response => {
           return response.json()   //conversion to json
       }).then(val => {
-          console.log('weather',val)
+          console.log('weather details',val)
           dispatch(saveweatherData(val))
           weatherCheckCount(val.hourly,dispatch,'hour')
           weatherCheckCount(val.daily,dispatch, 'day')
@@ -26,16 +26,9 @@ function convertTimeDay(weatherVal, dispatch){
 
   const convertedDay = weatherVal.daily.map(val => {
     var a = new Date(val.dt * 1000);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    // var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     var day = days[a.getDay()];
-    var hour = a.getHours();
-    if (a.getHours()>12){
-      hour = hour % 12
-      var meridiem = ' pm'
-    }
-    else{ var meridiem = ' am' }
-
     var time = day ;
     return time;
   })
@@ -108,7 +101,7 @@ function convertTimeHour(weatherVal, dispatch){
   drizzleNum = (drizzleNum / (chartTimes.length))*100
   thunderstormNum = (thunderstormNum / (chartTimes.length))*100
   
-  if(option == 'hour'){
+  if(option === 'hour'){
 
     dispatch(savePieDataHourly({ //real form cloudNum:cloudNum
       cloudNum, 
@@ -120,7 +113,7 @@ function convertTimeHour(weatherVal, dispatch){
     }))
   }
 
-  if(option == 'day'){
+  if(option === 'day'){
 
     dispatch(savePieDataDaily({ //real form cloudNum:cloudNum
       cloudNum, 

@@ -49,7 +49,7 @@
 
     vertical-align: middle;
     height: 200px;
-    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.5));
 }
 
 .weather-logo img{
@@ -86,7 +86,8 @@
 
 .temp img{
 
-    margin-top: 5px;
+    margin-top: 10px;
+    height: 60px;
 }
 
 .pres-hum{

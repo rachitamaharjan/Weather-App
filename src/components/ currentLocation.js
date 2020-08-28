@@ -20,7 +20,7 @@ class CurrentLocation extends React.Component{
   }
   
   componentWillReceiveProps(nextProps){
-    const {latitude,longitude,fetchSaveWeather} = nextProps
+    const {latitude,longitude,} = nextProps
     if(latitude && longitude && this.props.latitude !== latitude && this.props.longitude !== longitude){
       this.fetchWeatherData(latitude, longitude)
     }
@@ -56,7 +56,7 @@ class CurrentLocation extends React.Component{
     
     if(this.state.loading){return( <LoadingWeather/> )}
     if( this.props.weatherData.current ) return ( <FetchWeather/> ) 
-    if (this.props.searchText == ''){
+    if (this.props.searchText === ''){
       return(
       <div className = 'do-input-container'>
           <div className = 'do-input-data'>

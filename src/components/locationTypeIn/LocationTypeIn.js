@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { saveEnteredLatitude } from '../../redux/action'
 import { saveEnteredLongitude } from '../../redux/action'
 import { saveSelectedLocation } from '../../redux/action'
-import loading from '../fetchWeather/loading.svg';
 
 
 import './locationTypeIn.css'
@@ -45,7 +44,6 @@ class LocationTypeIn extends React.Component{
 
     onChangeInput = (e) => {
       const API_KEY = process.env.REACT_APP_AUTOCOMPLETE_API_KEY;
-        console.log('onchangeinput',e.target.value);
         this.setState({
           ...this.state,
           inputValue: e.target.value
@@ -57,7 +55,6 @@ class LocationTypeIn extends React.Component{
             return response.json()   //conversion of json
         }).then(val => {
             if (val.features[0]){
-              console.log('yup')
                 this.setState({
                   allLocation: val,
                   enteredLatitude: val.features[0].geometry.coordinates[1],
@@ -66,7 +63,6 @@ class LocationTypeIn extends React.Component{
                 })
               }
               else{
-                console.log('nope')
                 this.setState({
                   enteredLatitude: 0,
                   enteredLongitude: 0,
