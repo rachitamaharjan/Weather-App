@@ -34,6 +34,9 @@ class LocationTypeIn extends React.Component{
         this.props.saveEnteredLatitude(this.state.enteredLatitude)
         this.props.saveEnteredLongitude(this.state.enteredLongitude)
         this.props.saveSelectedLocation(this.state.selectedLocation)
+        this.setState({
+          inputValue: ''
+        })
       }
       else{
         alert("Oops! Our System couldn't find that location. 🤷 🤷‍♂️ !!");
@@ -59,7 +62,7 @@ class LocationTypeIn extends React.Component{
                   allLocation: val,
                   enteredLatitude: val.features[0].geometry.coordinates[1],
                   enteredLongitude: val.features[0].geometry.coordinates[0],
-                  selectedLocation: val.features[0].properties.name
+                  selectedLocation: val.features[0].properties.name,
                 })
               }
               else{
