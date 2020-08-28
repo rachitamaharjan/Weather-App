@@ -32,11 +32,13 @@ class FetchWeather extends React.Component {
                             <div className = 'weather-logo'>
                                 <img src= {`https://openweathermap.org/img/wn/${this.props.weatherData.current.weather[0].icon}@2x.png`} alt = ''/>
                             </div>
-                            <div className = 'time-temp-desc'>
-                                <div className = 'selected-location'>{this.props.selectedLocation}</div>
-                                <div className = 'timezone'>{this.props.weatherData.timezone}</div>
-                                <div className = 'temp'> <img src = {temp_icon} alt = ''/> {this.props.weatherData.current.temp}℃</div>
-                                <div className = 'weather-desc'> {this.props.weatherData.current.weather[0].description} </div>
+                            <div className = 'time-temp-desc-container'>
+                                <div className = 'time-temp-desc'>
+                                    <div className = 'selected-location'>{this.props.selectedLocation}</div>
+                                    <div className = 'timezone'>{this.props.weatherData.timezone}</div>
+                                    <div className = 'temp'> <img src = {temp_icon} alt = ''/> {this.props.weatherData.current.temp}℃</div>
+                                    <div className = 'weather-desc'> {this.props.weatherData.current.weather[0].description} </div>
+                                </div>
                             </div>
                         </div>
                     </div>

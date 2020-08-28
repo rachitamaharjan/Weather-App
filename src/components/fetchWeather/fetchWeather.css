@@ -76,6 +76,7 @@
 .temp{
 
     font-size: 60px;
+    display: flex;
 }
 
 .weather-desc{
@@ -151,7 +152,7 @@
     margin-top: 10px;
 }
 
-@media (max-width: 481px) {
+@media (max-width: 471px) {
 
     .main-wrapper{
 
@@ -187,6 +188,54 @@
 
         margin-right: 0;
     }
+
+    .time-temp-desc{
+        vertical-align: top;
+        line-height: 1.4;
+        padding-left: 0px;
+        text-align: left;
+    }
+
+    .timezone{
+        font-size: 15px;
+    }
+
+    .temp{
+        font-size: 30px;
+        display: flex;
+    }
+
+    .temp img{
+        margin-top: 5px;
+        height: 30px;
+    }
+
+    .weather-desc{
+        font-size: 19px;
+    }
+
+    .weather-logo{
+        display: flex;
+        justify-content: center;
+        height: unset;
+    }
+
+    .weather-logo img{
+        height: unset;
+    }
+
+    .img-info{
+        display: unset;
+    }
+
+    .time-temp-desc-container{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+
+
  }
 
 
