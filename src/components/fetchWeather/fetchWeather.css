@@ -203,6 +203,7 @@
     .temp{
         font-size: 30px;
         display: flex;
+        padding-left: 10px;
     }
 
     .temp img{
