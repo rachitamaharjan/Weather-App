@@ -31,18 +31,18 @@
 
 .img-info{
     display: inline-flex;
-    border-radius: 200px;
     vertical-align: middle;
-    background-color: #FFF5F5;
     width: 100%;
-    max-width: 700px;
-    justify-items: center;
+    align-items: center;
+    max-width: 500px;
+    justify-content: center;
     margin: 50px 30px 10px 30px;
-    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.4));
 }
 
 .weather-logo{
     vertical-align: middle;
+    height: 200px;
+    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.1));
 }
 
 .weather-logo img{
@@ -53,38 +53,35 @@
 
 
 .time-temp-desc{
-    margin: 0px;
     vertical-align: top;
-    line-height: 50px;
-    margin-left: 20%;    
+    line-height: 1.4;
+    padding-left: 50px;
+    text-align: left;
 }
 
 .selected-location{
-    text-align: center;
-    /* font-size: 30px; */
+
     margin-top: 10px;
 }
 
 .temp{
     font-size: 60px;
-    text-align: center;
 }
 
 .weather-desc{
     font-size: 25px;
-    text-align: center;
-    text-align: center;
     margin: 3px 0 10px 0;
 }
 
 .temp img{
-    margin: 5px -15px 0px 25px;
+    margin-top: 5px;
 }
 
 .pres-hum{
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .pres-hum img{
@@ -138,8 +135,7 @@
 
 .timezone{
     font-size: 23px;
-    margin-left: 20px;
-    text-align: center;
+    margin-top: 10px;
 }
 
 @media (max-width: 481px) {
