@@ -1,18 +1,22 @@
 .weather-details{
+
     font-weight: 800;
 }
 
 .img-info-container{
+
     justify-content: center;
     display: flex;
 }
 
 .waiting-container{
+
     display: flex;
     justify-content: center;
 }
 
 .waitingForData{
+
     background-color:#FFF5F5 ;
     border-radius: 90px;
     padding: 20px 30px 50px 30px;
@@ -25,11 +29,13 @@
 }
 
 .waiting-packman{
+
     display: flex;
     justify-content: center;
 }
 
 .img-info{
+
     display: inline-flex;
     vertical-align: middle;
     width: 100%;
@@ -40,12 +46,14 @@
 }
 
 .weather-logo{
+
     vertical-align: middle;
     height: 200px;
     filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.1));
 }
 
 .weather-logo img{
+
     border-radius: 50%;
     height: 100%;
     background-color: #EE777F;
@@ -53,6 +61,7 @@
 
 
 .time-temp-desc{
+
     vertical-align: top;
     line-height: 1.4;
     padding-left: 50px;
@@ -65,19 +74,23 @@
 }
 
 .temp{
+
     font-size: 60px;
 }
 
 .weather-desc{
+
     font-size: 25px;
     margin: 3px 0 10px 0;
 }
 
 .temp img{
+
     margin-top: 5px;
 }
 
 .pres-hum{
+
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -85,16 +98,13 @@
 }
 
 .pres-hum img{
+
     height: 48px;
     width: 48px;
 }
 
-.pres-hum .humidity, .pres-hum .dew-point{
-    /* margin-left: 10px; */
-
-}
-
 .pres-hum li{
+
     width: 111px;
     height: 111px;
     border-radius: 18px;
@@ -107,6 +117,7 @@
 }
 
 .pres-hum p{
+
     margin: 0 auto;
     margin-top: -30px;
     height: 31px;
@@ -119,21 +130,22 @@
 }
 
 .pres-hum .pressure{
-    background: #1D2343;
 
+    background: #1D2343;
 }
 
 .pres-hum .humidity{
-    background: #EE777F;
 
+    background: #EE777F;
 }
 
 .pres-hum .dew-point{
-    background: #65BDC0;
 
+    background: #65BDC0;
 }
 
 .timezone{
+
     font-size: 23px;
     margin-top: 10px;
 }
@@ -141,20 +153,23 @@
 @media (max-width: 481px) {
 
     .main-wrapper{
+
         max-width: 480px;
     }
 
     .pressure-container, .humidity-container, .dew-container{
+
         display: grid;
         justify-content: center;
-
     }
 
     .pres-hum{
+
         display: unset;
     }
 
     .pres-hum p {
+
         margin: 0 auto;
         margin-top: -30px;
         height: 31px;
@@ -168,10 +183,9 @@
     }
 
     .pres-hum li{
+
         margin-right: 0;
     }
-
-    
  }
 
 

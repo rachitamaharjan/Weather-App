@@ -32,7 +32,6 @@ class CurrentLocation extends React.Component{
     })
     this.props.fetchSaveWeather(latitude,longitude)
     .finally( val => {
-      console.log('a', val)
       this.setState({
         loading:false
       })}

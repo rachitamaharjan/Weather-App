@@ -89,7 +89,7 @@ const mapStateToProps = (state) => (
       latitude: state.latitude,
       longitude: state.longitude,
       weatherData: state.weatherData,
-      pieChartHourly: state.pieChartHourly,
+      pmeChartHourly: state.pieChartHourly,
       pieChartDaily: state.pieChartDaily,
       selectedLocation: state.selectedLocation,
       unixToHours: state.unixToHours,

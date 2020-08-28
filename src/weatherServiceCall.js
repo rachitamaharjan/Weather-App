@@ -37,7 +37,6 @@ function convertTimeDay(weatherVal, dispatch){
     else{ var meridiem = ' am' }
 
     var time = day ;
-    console.log('day', time)
     return time;
   })
   dispatch(unixToDay({ 
@@ -69,7 +68,6 @@ function convertTimeHour(weatherVal, dispatch){
 
 //weatherCountName
  function weatherCheckCount(weatherVal,dispatch, option){
-  //  console.log('weatherval',weatherVal)
   let cloudNum = 0, clearNum = 0, snowNum = 0, rainNum = 0, drizzleNum = 0, thunderstormNum = 0;
   const chartTimes = weatherVal.map(val => {
   switch(val.weather[0].main){
@@ -103,12 +101,12 @@ function convertTimeHour(weatherVal, dispatch){
     } 
   })
 
-  cloudNum = (cloudNum/(chartTimes.length))*100
-  clearNum = (clearNum/(chartTimes.length))*100
-  snowNum = (snowNum/(chartTimes.length))*100
-  rainNum = (rainNum/(chartTimes.length))*100
-  drizzleNum = (drizzleNum/(chartTimes.length))*100
-  thunderstormNum = (thunderstormNum/(chartTimes.length))*100
+  cloudNum = (cloudNum / (chartTimes.length))*100
+  clearNum = (clearNum / (chartTimes.length))*100
+  snowNum = (snowNum / (chartTimes.length))*100
+  rainNum = (rainNum / (chartTimes.length))*100
+  drizzleNum = (drizzleNum / (chartTimes.length))*100
+  thunderstormNum = (thunderstormNum / (chartTimes.length))*100
   
   if(option == 'hour'){
 
@@ -123,7 +121,6 @@ function convertTimeHour(weatherVal, dispatch){
   }
 
   if(option == 'day'){
-    console.log('inside day pie chart', weatherVal)
 
     dispatch(savePieDataDaily({ //real form cloudNum:cloudNum
       cloudNum, 

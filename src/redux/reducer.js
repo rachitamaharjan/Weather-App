@@ -42,7 +42,6 @@ const initialState = {
             return {...state, unixToHours: action.payload.unixToHours}
 
         case 'UNIX_TO_DAY':
-            console.log('reducer unixto hours',action.payload)
             return {...state, unixToDay: action.payload.unixToDay}
             
       default:
