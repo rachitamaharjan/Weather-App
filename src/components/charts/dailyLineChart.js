@@ -111,7 +111,6 @@ export class DailyLineChart extends React.Component {
                                 c.chartArea.top = size * 4;
                               }
                               c.scales['x-axis-0'].options.ticks.minor.fontSize = size;                              
-                              console.log('c value',c)
                           }
                        }]}
                     />

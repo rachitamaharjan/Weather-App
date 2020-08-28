@@ -7,10 +7,8 @@ import {  unixToDay } from "./redux/action";
 export function weatherServiceCall(latitude,longitude){
 
     return (dispatch, getState) => {
-      // console.log('getstate', getState())
-        fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=780a4551ff3e6ac4892ab54ec1e701ec&units=metric`)
+        return fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=780a4551ff3e6ac4892ab54ec1e701ec&units=metric`)
         .then(response => {
-          // console.log('single response',response)
           return response.json()   //conversion to json
       }).then(val => {
           console.log('weather',val)
@@ -30,9 +28,6 @@ function convertTimeDay(weatherVal, dispatch){
     var a = new Date(val.dt * 1000);
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
     var day = days[a.getDay()];
     var hour = a.getHours();
     if (a.getHours()>12){
@@ -40,8 +35,7 @@ function convertTimeDay(weatherVal, dispatch){
       var meridiem = ' pm'
     }
     else{ var meridiem = ' am' }
-    // var min = a.getMinutes();
-    // var sec = a.getSeconds();
+
     var time = day ;
     console.log('day', time)
     return time;
