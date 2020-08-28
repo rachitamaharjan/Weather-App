@@ -7,7 +7,7 @@ import {  unixToDay } from "./redux/action";
 export function weatherServiceCall(latitude,longitude){
 
     return (dispatch, getState) => {
-        return fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=780a4551ff3e6ac4892ab54ec1e701ec&units=metric`)
+        return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=780a4551ff3e6ac4892ab54ec1e701ec&units=metric`)
         .then(response => {
           return response.json()   //conversion to json
       }).then(val => {
