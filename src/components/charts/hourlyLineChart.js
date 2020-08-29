@@ -1,9 +1,9 @@
 import React from 'react';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import './chart.css';
 
-const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
-  return{
+const getLineChartConfig = (timeHourly, weatherDataHourly) => {
+  return {
     labels: timeHourly,
     datasets: [
       {
@@ -16,7 +16,7 @@ const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
         pointHoverBorderColor: 'rgb(217, 245, 60)',
         borderWidth: 2,
         pointHoverBorderWidth: 5,
-        data: weatherDataHourly.map( each => each.temp )
+        data: weatherDataHourly.map(each => each.temp)
       },
       {
         label: 'Humidity',
@@ -28,7 +28,7 @@ const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
         pointHoverBorderColor: '#e9515c',
         borderWidth: 2,
         pointHoverBorderWidth: 5,
-        data: weatherDataHourly.map( each => each.humidity )
+        data: weatherDataHourly.map(each => each.humidity)
       },
       {
         label: 'Dew Point',
@@ -40,7 +40,7 @@ const getLineChartConfig = (timeHourly, weatherDataHourly) =>{
         pointHoverBorderColor: '#8ff6fa',
         borderWidth: 2,
         pointHoverBorderWidth: 5,
-        data: weatherDataHourly.map(each => each.dew_point )
+        data: weatherDataHourly.map(each => each.dew_point)
       }
     ]
   }
@@ -54,70 +54,71 @@ export class HourlyLineChart extends React.Component {
 
 
 
-render() {
+  render() {
 
-        return (
-            <div className = 'daily-line-chart'>
-                <Line
-                    data = {getLineChartConfig(this.props.timeHourly, this.props.weatherData.hourly)}
-                    options = {{
-                        title:{
-                        display:true,
-                        text:'Today\'s Values per hour',
-                        fontFamily: 'comfortaa',
-                        fontColor: 'black',
-                        fontSize: 20,
-                        maintainAspectRatio: true,
-                        },
-                        scales: {
-                          xAxes: [{
-                              gridLines: { display: false },
-                              ticks: {
-                                fontSize: 8,
-                                beginAtZero: true,
-                              },
-                              /* Keep x-axis width proportional to overall chart width */
-                              afterFit: function(scale) {
-                                  var chartWidth = scale.chart.width;
-                                  var new_width=chartWidth*0.40;
-                                  scale.width = new_width;
-                              }
-                          }],
-                          yAxes: [{
-                              gridLines: { display: false },
-                              ticks: { display: false }
-                          }]
-                        },
-                        legend:{
-                            labels: { fontFamily: 'comfortaa' },
-                            display:true,
-                            position:'top',
-                        }
-                    }}
-                    plugins = {[{
-                      /* Adjust axis labelling font size according to chart size */
-                      beforeDraw: function(c) {
-                          var chartHeight = c.chart.height;
-                          if(chartHeight < 250){
-                            var size = chartHeight * 5 / 100;
-                            var boxSize = chartHeight * 10 / 100;
-                            c.legend.options.labels.boxWidth = boxSize;
-                            c.legend.options.labels.fontSize = size;
-                            c.options.title.fontSize = size * 2;
-                            c.options.elements.point.radius = 0.1;
-                            c.options.elements.point.hoverRadius = 0.5;
-                            c.options.elements.point.borderWidth = 0;
-                            c.options.elements.line.borderWidth = 0.1;
-                            c.options.elements.point.hoverBorderWidth = 0.5;
-                            c.legend.top = 30;
-                            c.legend.bottom = 40;
-                            c.chartArea.top = size * 4;
-                          }
-                          c.scales['x-axis-0'].options.ticks.minor.fontSize = size;                          
-                      }
-                   }]}
-                />
-                </div>
-        )}
+    return (
+      <div className='daily-line-chart'>
+        <Line
+          data={getLineChartConfig(this.props.timeHourly, this.props.weatherData.hourly)}
+          options={{
+            title: {
+              display: true,
+              text: 'Today\'s Values per hour',
+              fontFamily: 'comfortaa',
+              fontColor: 'black',
+              fontSize: 20,
+              maintainAspectRatio: true,
+            },
+            scales: {
+              xAxes: [{
+                gridLines: { display: false },
+                ticks: {
+                  fontSize: 8,
+                  beginAtZero: true,
+                },
+                /* Keep x-axis width proportional to overall chart width */
+                afterFit: function (scale) {
+                  var chartWidth = scale.chart.width;
+                  var new_width = chartWidth * 0.40;
+                  scale.width = new_width;
+                }
+              }],
+              yAxes: [{
+                gridLines: { display: false },
+                ticks: { display: false }
+              }]
+            },
+            legend: {
+              labels: { fontFamily: 'comfortaa' },
+              display: true,
+              position: 'top',
+            }
+          }}
+          plugins={[{
+            /* Adjust axis labelling font size according to chart size */
+            beforeDraw: function (c) {
+              var chartHeight = c.chart.height;
+              if (chartHeight < 250) {
+                var size = chartHeight * 5 / 100;
+                var boxSize = chartHeight * 10 / 100;
+                c.legend.options.labels.boxWidth = boxSize;
+                c.legend.options.labels.fontSize = size;
+                c.options.title.fontSize = size * 2;
+                c.options.elements.point.radius = 0.1;
+                c.options.elements.point.hoverRadius = 0.5;
+                c.options.elements.point.borderWidth = 0;
+                c.options.elements.line.borderWidth = 0.1;
+                c.options.elements.point.hoverBorderWidth = 0.5;
+                c.legend.top = 30;
+                c.legend.bottom = 40;
+                c.chartArea.top = size * 4;
+              }
+              c.scales['x-axis-0'].options.ticks.minor.fontSize = size;
+            }
+          }]}
+        />
+      </div>
+    )
+  }
 }
 

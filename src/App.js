@@ -5,34 +5,34 @@ import LocationTypeIn from './components/locationTypeIn/LocationTypeIn'
 import store from './redux/store';
 import { Provider } from 'react-redux';
 
-class App extends React.Component{
+class App extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       searchText: ''
     }
-      
-    
+
+
   }
 
   onSearchTextChange = (searchText) => {
-      this.setState({
-        searchText
-      })
+    this.setState({
+      searchText
+    })
   }
-  render(){
+  render() {
 
     return (
-      <Provider store = {store}>
-        <div className = 'main-wrapper'>
-        <LocationTypeIn searchText = {this.state.searchText} onSearchTextChange = {this.onSearchTextChange} />
-        <CurrentLocation searchText = {this.state.searchText} />
+      <Provider store={store}>
+        <div className='main-wrapper'>
+          <LocationTypeIn searchText={this.state.searchText} onSearchTextChange={this.onSearchTextChange} />
+          <CurrentLocation searchText={this.state.searchText} />
         </div>
       </Provider>
     );
   }
-} 
+}
 
 
 export default App;
