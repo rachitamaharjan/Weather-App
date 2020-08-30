@@ -22,11 +22,6 @@ class LocationTypeIn extends React.Component {
     }
   }
 
-  componentDidMount() {
-
-
-  }
-
   addLatLong = () => {
 
     if (this.state.enteredLatitude !== 0) {
@@ -74,34 +69,50 @@ class LocationTypeIn extends React.Component {
 
   render() {
 
+    console.log('aayo',this.props.currentDate)
     if (this.state.allLocation && Object.keys(this.state.allLocation).length !== 0) {
 
       return (
-        <div className='location-search-box'>
-          <input type="text" list='location-values' id='location-input' placeholder="Search a Place..."
-            value={ this.state.inputValue } onChange={ this.onChangeInput } />
-          <datalist id='location-values'>
-            {this.state.allLocation.features.map(eachLocation =>
-              <option value={ eachLocation.properties.name } onClick={() =>
-                this.addtoState(eachLocation.geometry.coordinates)}>
-                { eachLocation.properties.label }
-              </option>
-            )} </datalist>
-          <input type='button' className='location-search-button' onClick={ this.addLatLong } />
+        <div>
+          <div className='location-search-box'>
+            <input type="text" list='location-values' id='location-input' placeholder="Search a Place..."
+              value={this.state.inputValue} onChange={this.onChangeInput} />
+              <datalist id='location-values'>
+                {this.state.allLocation.features.map(eachLocation =>
+                  <option value={eachLocation.properties.name} onClick={() =>
+                    this.addtoState(eachLocation.geometry.coordinates)}>
+                    {eachLocation.properties.label}
+                  </option>
+                )}
+              </datalist>
+            <input type='button' className='location-search-button' onClick={this.addLatLong} />
+          </div>
+            <div className='date-display'>{this.props.currentDate}</div>
         </div>
       )
     }
     else {
       return (
-        <div className = 'location-search-box'>
-          <input type = "text" list='location-values' id = 'location-input' placeholder = "Search a Place..."
-            value = { this.state.inputValue } onChange={ this.onChangeInput } />
-          <input type='button' className='location-search-button' onClick={ this.addLatLong } />
+        <div>
+        <div className='location-search-box'>
+          <input type="text" list='location-values' id='location-input' placeholder="Search a Place..."
+            value={this.state.inputValue} onChange={this.onChangeInput} />
+          <input type='button' className='location-search-button' onClick={this.addLatLong} />
         </div>
+        <div className='date-display'>{this.props.currentDate}</div>
+        </div>
+
       )
     }
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    currentDate: state.currentDate
+  }
+}
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -112,4 +123,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(0, mapDispatchToProps)(LocationTypeIn);
+export default connect(mapStateToProps, mapDispatchToProps)(LocationTypeIn);

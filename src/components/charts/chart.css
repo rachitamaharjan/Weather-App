@@ -19,7 +19,7 @@ canvas {
     height:100%;
  }
 
- @media (max-width: 481px) {
+ @media (max-width: 480px) {
 
     canvas{
         display: block;

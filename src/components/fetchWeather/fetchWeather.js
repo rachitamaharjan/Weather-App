@@ -23,8 +23,12 @@ class FetchWeather extends React.Component {
         }
     }
 
+    tofahrenheit = (celsius) => {
+        return (celsius * (9 / 5))+32;
+      }
 
     render() {
+        var tempInfahrenheit = this.tofahrenheit(this.props.weatherData.current.temp)
         return (
             <div className='weather-details clearfix'>
                 <div className='img-info-container'>
@@ -36,8 +40,14 @@ class FetchWeather extends React.Component {
                             <div className='time-temp-desc'>
                                 <div className='selected-location'>{this.props.selectedLocation}</div>
                                 <div className='timezone'>{this.props.weatherData.timezone}</div>
-                                <div className='temp'> <img src={temp_icon} alt='' /> {this.props.weatherData.current.temp}℃</div>
+                                <div className='temp'> <img src={temp_icon} alt='' />
+                                    <p className='temp-cel'> {this.props.weatherData.current.temp}</p>
+                                    <p className='temp-fah'>{tempInfahrenheit}</p>
+                                    <p className='temp-cel-unit'>°C</p>
+                                    <p className='temp-fah-unit'>°F</p>
+                                </div>
                                 <div className='weather-desc'> {this.props.weatherData.current.weather[0].description} </div>
+                                <div className='date-display-small'>{this.props.currentDate}</div>
                             </div>
                         </div>
                     </div>
@@ -93,7 +103,8 @@ const mapStateToProps = (state) => (
         pieChartDaily: state.pieChartDaily,
         selectedLocation: state.selectedLocation,
         unixToHours: state.unixToHours,
-        unixToDay: state.unixToDay
+        unixToDay: state.unixToDay,
+        currentDate: state.currentDate
     }
 )
 

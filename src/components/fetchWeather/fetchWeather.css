@@ -74,9 +74,22 @@
 }
 
 .temp{
-
-    font-size: 60px;
+    
+    padding: 15px 0;
+    font-size: 35px;
     display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.temp-cel, .temp-fah{
+
+    display: flex;
+}
+
+.temp-fah, .temp-fah-unit{
+
+    display: none;
 }
 
 .weather-desc{
@@ -85,7 +98,7 @@
     margin: 3px 0 10px 0;
 }
 
-.temp img{
+.temp-cel img, .temp-fah img{
 
     margin-top: 10px;
     height: 60px;
@@ -152,7 +165,12 @@
     margin-top: 10px;
 }
 
-@media (max-width: 471px) {
+.date-display-small{
+    display: none;
+}
+
+
+@media (max-width: 480px) {
 
     .main-wrapper{
 
@@ -190,53 +208,85 @@
     }
 
     .time-temp-desc{
+
         vertical-align: top;
         line-height: 1.4;
         padding-left: 0px;
-        text-align: left;
+        text-align: center;
     }
 
     .timezone{
+
         font-size: 15px;
+        margin-bottom: 10px;
     }
 
     .temp{
-        font-size: 30px;
-        display: flex;
-        padding-left: 10px;
+        font-size: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
     }
 
     .temp img{
-        margin-top: 5px;
+        margin-top: -4px;
         height: 30px;
+        padding-right: 10px;
     }
 
     .weather-desc{
-        font-size: 19px;
+
+        font-size: 21px;
+        margin: 3px 0 2px 0;
     }
 
     .weather-logo{
+
         display: flex;
         justify-content: center;
         height: unset;
     }
 
     .weather-logo img{
-        height: unset;
+
+        height: 150px;
+        margin: 3px 0 2px 0;
     }
 
     .img-info{
+
         display: unset;
     }
 
     .time-temp-desc-container{
+
         display: flex;
         justify-content: center;
         text-align: center;
     }
 
+    .selected-location{
 
+        margin-top: 17px;
+        font-size: 16px;
+    }
 
+    .date-display{
+
+        display: none;
+    }
+
+    .date-display-small{
+
+        display: inline;
+        text-align: center;
+        color: #65BDC0;
+        font-size: 15px;
+        -webkit-font-smoothing: subpixel-antialiased;
+        font-weight: 900;
+        filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.1));
+    }
  }
 
 

@@ -3,6 +3,7 @@ import { savePieDataHourly } from "./redux/action";
 import { savePieDataDaily } from "./redux/action";
 import { unixToHours } from "./redux/action";
 import { unixToDay } from "./redux/action";
+import { currentDate } from "./redux/action";
 
 export function weatherServiceCall(latitude, longitude) {
 
@@ -11,14 +12,33 @@ export function weatherServiceCall(latitude, longitude) {
       .then(response => {
         return response.json()   //conversion to json
       }).then(val => {
-        console.log('weather details', val)
-        dispatch(saveweatherData(val))
-        weatherCheckCount(val.hourly, dispatch, 'hour')
-        weatherCheckCount(val.daily, dispatch, 'day')
-        convertTimeHour(val, dispatch)
-        convertTimeDay(val, dispatch)
+        console.log('weather details', val);
+        dispatch(saveweatherData(val));
+        weatherCheckCount(val.hourly, dispatch, 'hour');
+        weatherCheckCount(val.daily, dispatch, 'day');
+        convertTimeHour(val, dispatch);
+        convertTimeDay(val, dispatch);
+        giveCurrentDate(val, dispatch);
       })
   }
+}
+
+
+function giveCurrentDate(weatherVal, dispatch) {
+
+  const currentDateCalc = () => {
+    var a = new Date(weatherVal.current.dt * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var date = a.getDate();
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var currentDate = date + 'th ' + month + ', ' + year;
+    return currentDate;
+  }
+  dispatch(currentDate({
+    currentDate: currentDateCalc(), //don't pass a function, call it
+  }))
+  console.log('hey')
 }
 
 
@@ -26,8 +46,7 @@ function convertTimeDay(weatherVal, dispatch) {
 
   const convertedDay = weatherVal.daily.map(val => {
     var a = new Date(val.dt * 1000);
-    // var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     var day = days[a.getDay()];
     var time = day;
     return time;
@@ -35,7 +54,6 @@ function convertTimeDay(weatherVal, dispatch) {
   dispatch(unixToDay({
     unixToDay: convertedDay,
   }))
-
 }
 
 function convertTimeHour(weatherVal, dispatch) {
@@ -45,8 +63,8 @@ function convertTimeHour(weatherVal, dispatch) {
     var a = new Date(val.dt * 1000);
     var hour = a.getHours();
     if (a.getHours() > 12) {
-      hour = hour % 12
-      var meridiem = ' pm'
+      hour = hour % 12;
+      var meridiem = ' pm';
     }
     else { var meridiem = ' am' }
     var time = hour + ':' + '00' + meridiem;
@@ -55,7 +73,6 @@ function convertTimeHour(weatherVal, dispatch) {
   dispatch(unixToHours({
     unixToHours: convertedHours,
   }))
-
 }
 
 

@@ -9,7 +9,6 @@ export const saveBrowserLongitude = (payload) => ({
   payload
 })
 
-
 export const saveEnteredLatitude = (payload) => ({
   type: 'SAVE_ENTERED_LATITUDE',
   payload
@@ -49,5 +48,13 @@ export const unixToDay = (payload) => ({
   type: 'UNIX_TO_DAY',
   payload
 })
+
+export const currentDate = (payload) => ({
+  type: 'CURRENT_DATE',
+  payload
+})
+
+
+
 
 

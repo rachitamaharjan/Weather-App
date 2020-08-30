@@ -8,7 +8,8 @@ const initialState = {
     pieChartDaily: {},
     selectedLocation: '',
     unixToHours: [],
-    unixToDay: []
+    unixToDay: [],
+    currentDate: ''
 }
 
 export const mainReducer = (state = initialState, action) => {
@@ -44,8 +45,13 @@ export const mainReducer = (state = initialState, action) => {
         case 'UNIX_TO_DAY':
             return { ...state, unixToDay: action.payload.unixToDay }
 
+        case 'CURRENT_DATE':
+            return { ...state, currentDate: action.payload.currentDate }
+
         default:
             return state;
     }
 }
+
+
 
