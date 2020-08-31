@@ -5,6 +5,8 @@ import temp_icon from './temperature.ico';
 import pressure_icon from './pressure.svg';
 import humidity_icon from './humidity.svg';
 import dew_icon from './dew_point.ico';
+import githubLogo from './github.svg';
+import portfolioLogo from './portfolio.svg';
 import { DailyLineChart } from '../charts/dailyLineChart.js';
 import { HourlyLineChart } from '../charts/hourlyLineChart.js';
 import { WeatherPieChart } from '../charts/weatherPieChart.js';
@@ -25,7 +27,7 @@ class FetchWeather extends React.Component {
     }
 
     tofahrenheit = (celsius) => {
-        return (celsius * (9 / 5))+32;
+        return Number(((celsius * (9 / 5))+32).toFixed(1));
       }
 
     toggleCelsius = () => {
@@ -101,6 +103,15 @@ class FetchWeather extends React.Component {
                         <HourlyLineChart weatherData={this.props.weatherData} timeHourly={this.props.unixToHours} />
                     </li>
                 </ul>
+                <div className = 'footer'>
+                    <div className = 'footer-text'>
+                        <p> Coded by</p>{}
+                        {/* <p>{": "}</p> */}
+                        {}<p className='footer-name'> Rachita Maharjan</p> 
+                    </div>
+                    <a href = 'https://github.com/smilerac'> <img src = {githubLogo}/> </a>
+                    <a href = 'http://smilerac.github.io'> <img src = {portfolioLogo}/> </a>
+                </div>
             </div>
         )
         // }
