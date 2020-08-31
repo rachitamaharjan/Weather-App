@@ -87,9 +87,14 @@
     display: flex;
 }
 
-.temp-fah, .temp-fah-unit{
+.temp-unit-clicked{
 
-    display: none;
+    color: black;
+}
+
+.temp-unit-unclicked{
+
+    color: gray;
 }
 
 .weather-desc{

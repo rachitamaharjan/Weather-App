@@ -69,7 +69,6 @@ class LocationTypeIn extends React.Component {
 
   render() {
 
-    console.log('aayo',this.props.currentDate)
     if (this.state.allLocation && Object.keys(this.state.allLocation).length !== 0) {
 
       return (

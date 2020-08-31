@@ -20,6 +20,7 @@ class FetchWeather extends React.Component {
             Rain: '',
             Drizzle: '',
             Thunderstorm: '',
+            showCelsius: true,
         }
     }
 
@@ -27,12 +28,24 @@ class FetchWeather extends React.Component {
         return (celsius * (9 / 5))+32;
       }
 
+    toggleCelsius = () => {
+        this.setState({
+          showCelsius: true,
+        });
+    }
+
+    toggleFahrenheit = () => {
+        this.setState({
+          showCelsius: false,
+        });
+    }
+
     render() {
         var tempInfahrenheit = this.tofahrenheit(this.props.weatherData.current.temp)
         return (
             <div className='weather-details clearfix'>
                 <div className='img-info-container'>
-                    <div className='img-info'>
+                    <div className='img-info'> 
                         <div className='weather-logo'>
                             <img src={`https://openweathermap.org/img/wn/${this.props.weatherData.current.weather[0].icon}@2x.png`} alt='' />
                         </div>
@@ -41,10 +54,11 @@ class FetchWeather extends React.Component {
                                 <div className='selected-location'>{this.props.selectedLocation}</div>
                                 <div className='timezone'>{this.props.weatherData.timezone}</div>
                                 <div className='temp'> <img src={temp_icon} alt='' />
-                                    <p className='temp-cel'> {this.props.weatherData.current.temp}</p>
-                                    <p className='temp-fah'>{tempInfahrenheit}</p>
-                                    <p className='temp-cel-unit'>°C</p>
-                                    <p className='temp-fah-unit'>°F</p>
+                                    <p className='temp-cel'> 
+                                        {this.state.showCelsius ? this.props.weatherData.current.temp : tempInfahrenheit}°
+                                    </p>
+                                    <p className={this.state.showCelsius ? 'temp-unit-clicked' : 'temp-unit-unclicked'} onClick = {this.toggleCelsius}>C</p>|
+                                    <p className={this.state.showCelsius ? 'temp-unit-unclicked' : 'temp-unit-clicked'} onClick = {this.toggleFahrenheit}>F</p>
                                 </div>
                                 <div className='weather-desc'> {this.props.weatherData.current.weather[0].description} </div>
                                 <div className='date-display-small'>{this.props.currentDate}</div>

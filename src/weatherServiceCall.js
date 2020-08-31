@@ -38,7 +38,6 @@ function giveCurrentDate(weatherVal, dispatch) {
   dispatch(currentDate({
     currentDate: currentDateCalc(), //don't pass a function, call it
   }))
-  console.log('hey')
 }
 
 
