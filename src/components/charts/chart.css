@@ -6,7 +6,7 @@
 
 .chart-container li {
 
-    margin: 30px 70px 30px 30px;
+    margin: 30px 50px 30px 50px;
 }
 
 canvas {
@@ -27,3 +27,19 @@ canvas {
         width: 100% !important;
     }
  }
+
+ /* @media (min-width: 1200px) { */
+
+    canvas{
+        /* display: block; */
+        max-height: 300px;
+        max-width: 600px;
+    }
+
+    .weather-pie-chart, .daily-line-chart, .hourly-line-chart{
+        display: flex;
+        justify-content: center;
+    }
+ /* } */
+
+

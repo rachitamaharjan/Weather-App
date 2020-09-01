@@ -54,6 +54,7 @@
     padding: 20px;
     font-size: 30px;
     font-weight: 900;
+    display: inline-table;
     margin: 100px 20px 0 20px;
     text-align: center;
     align-items: center;
